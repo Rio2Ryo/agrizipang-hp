@@ -9,19 +9,22 @@ const businessPillars = [
     title: "営農型太陽光発電",
     body: "農地活用と再生可能エネルギー導入を両立させ、地域経済と脱炭素の両面から事業化を支援します。",
     points: ["候補地整理", "制度・合意形成支援", "導入計画の策定"],
-    icon: "☀️"
+    icon: "☀️",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80"
   },
   {
     title: "CO2 削減ソリューション",
     body: "森林・海藻・飼料など複数の手段を組み合わせ、自治体・企業ごとに実行可能な削減計画へ落とし込みます。",
     points: ["削減テーマ整理", "実証設計", "KPI・開示指標の整理"],
-    icon: "🌿"
+    icon: "🌿",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=80"
   },
   {
     title: "農業・資材・バイオマス支援",
     body: "主軸事業を補完するかたちで、資材供給、バイオマス燃料、周辺ソリューションの導入を支援します。",
     points: ["資材調達", "周辺事業設計", "運用体制づくり"],
-    icon: "🌾"
+    icon: "🌾",
+    image: "https://images.unsplash.com/photo-1625246333195-f81961856161?w=400&q=80"
   }
 ];
 
@@ -29,17 +32,20 @@ const sustainabilityItems = [
   {
     title: "数値で語れる脱炭素",
     body: "CO2 削減量、対象領域、対象地域など、初期段階から説明責任を果たせる指標設計を重視します。",
-    icon: "📊"
+    icon: "📊",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
   },
   {
     title: "地域に残る仕組みづくり",
     body: "単発の実証で終わらせず、地域雇用・運営体制・継続予算まで見据えた実装を進めます。",
-    icon: "🏘️"
+    icon: "🏘️",
+    image: "https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=400&q=80"
   },
   {
     title: "企業の事業性との両立",
     body: "ESG だけでなく、投資判断・調達要件・供給安定性まで見据えた B2B 設計を行います。",
-    icon: "💼"
+    icon: "💼",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80"
   }
 ];
 
@@ -47,12 +53,14 @@ const collaborationItems = [
   {
     title: "自治体 × 企業 × 現場の三者連携",
     body: "行政計画、企業ニーズ、現場運用のギャップを埋め、実行可能な体制を組成します。",
-    icon: "🤝"
+    icon: "🤝",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80"
   },
   {
     title: "共同検証パートナーとの推進",
     body: "MVT は共同検証パートナーの一つとして参画し、連携プロジェクトとして実証の精度を高めます。",
-    icon: "🔬"
+    icon: "🔬",
+    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80"
   }
 ];
 
@@ -60,17 +68,20 @@ const aboutCards = [
   {
     title: "信頼性のある情報設計",
     body: "自治体や企業が判断しやすいよう、事業の目的・スキーム・成果指標を明確に整理します。",
-    icon: "📋"
+    icon: "📋",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80"
   },
   {
     title: "主軸を明確にした事業構成",
     body: "営農型太陽光発電と CO2 削減提案を中核に据え、周辺事業を補完的に位置づけます。",
-    icon: "🎯"
+    icon: "🎯",
+    image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&q=80"
   },
   {
     title: "問い合わせ導線を最適化",
     body: "Hero、各セクション、最終セクションの複数導線で、相談につながる導線設計を行います。",
-    icon: "📬"
+    icon: "📬",
+    image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=400&q=80"
   }
 ];
 
@@ -173,10 +184,20 @@ export default function Home() {
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {aboutCards.map((card) => (
-            <div key={card.title} className="card text-center">
-              <div className="mb-4 text-4xl">{card.icon}</div>
-              <h3 className="text-xl font-bold text-deep">{card.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{card.body}</p>
+            <div key={card.title} className="card overflow-hidden">
+              <div className="h-40 w-full overflow-hidden">
+                <img 
+                  src={card.image} 
+                  alt={card.title}
+                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-5">
+                <div className="mb-3 text-3xl">{card.icon}</div>
+                <h3 className="text-lg font-bold text-deep">{card.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{card.body}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -196,15 +217,25 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {businessPillars.map((item) => (
-              <div key={item.title} className="card flex h-full flex-col">
-                <div className="mb-4 text-4xl">{item.icon}</div>
-                <h3 className="text-2xl font-bold text-deep">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-slate-600">{item.body}</p>
-                <ul className="mt-6 space-y-2 text-sm text-slate-600">
-                  {item.points.map((point) => (
-                    <li key={point}>• {point}</li>
-                  ))}
-                </ul>
+              <div key={item.title} className="card flex h-full flex-col overflow-hidden">
+                <div className="h-48 w-full overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 p-5">
+                  <div className="mb-3 text-3xl">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-deep">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.body}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                    {item.points.map((point) => (
+                      <li key={point}>• {point}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -233,11 +264,21 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
             {sustainabilityItems.map((item) => (
-              <div key={item.title} className="card flex items-start gap-4">
-                <span className="text-3xl">{item.icon}</span>
-                <div>
-                  <h3 className="text-xl font-bold text-deep">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{item.body}</p>
+              <div key={item.title} className="card overflow-hidden">
+                <div className="h-32 w-full overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-start gap-4 p-4">
+                  <span className="text-3xl">{item.icon}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-deep">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{item.body}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -277,11 +318,21 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {collaborationItems.map((item) => (
-              <div key={item.title} className="card flex items-start gap-4">
-                <span className="text-3xl">{item.icon}</span>
-                <div>
-                  <h3 className="text-2xl font-bold text-deep">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.body}</p>
+              <div key={item.title} className="card overflow-hidden">
+                <div className="h-40 w-full overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-start gap-4 p-4">
+                  <span className="text-3xl">{item.icon}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-deep">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{item.body}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -321,15 +372,19 @@ export default function Home() {
               <span className="text-slate-600">contact@agrizipang.jp</span>
             </div>
           </div>
-          {/* 地図プレースホルダー */}
-          <div className="rounded-[2rem] border border-deep/10 bg-slate-100 p-8">
-            <div className="flex h-full min-h-[280px] items-center justify-center rounded-xl bg-white">
-              <div className="text-center text-slate-400">
-                <span className="text-5xl">🗺️</span>
-                <p className="mt-4 text-sm">地図表示エリア</p>
-                <p className="text-xs">（Google Maps 等埋め込み予定）</p>
-              </div>
-            </div>
+          {/* 地図 - Google Maps 埋め込み */}
+          <div className="rounded-[2rem] border border-deep/10 overflow-hidden shadow-soft">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205978.7461937875!2d139.6386866!3d36.6839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601d64c8c2f5b1b7%3A0x1e3f8e0c0c0c0c0c!2z5rGf6LC35Yy6!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+              width="100%"
+              height="320"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+              title="栃木県地図"
+            />
           </div>
         </div>
       </section>
