@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-slate-900;
+}
+
+.bg-atmosphere {
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(74, 144, 226, 0.18), transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(45, 80, 22, 0.18), transparent 45%),
+    linear-gradient(180deg, rgba(45, 80, 22, 0.08), transparent 35%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(45, 80, 22, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 80, 22, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.section-divider {
+  @apply h-px w-full bg-gradient-to-r from-transparent via-deep/40 to-transparent;
+}
+
+.tag {
+  @apply inline-flex items-center rounded-full border border-deep/30 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-deep;
+}
+
+.card {
+  @apply rounded-3xl border border-deep/10 bg-white/90 p-6 shadow-soft backdrop-blur;
+}
