@@ -14,6 +14,12 @@ body {
   @apply bg-white text-slate-900;
 }
 
+/* Dot pattern overlay */
+.pattern-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
 /* Hero Background */
 .bg-atmosphere {
   background-image:
