@@ -1,6 +1,10 @@
 import Image from "next/image";
 import NavBar from "./components/NavBar";
 import ContactForm from "./components/ContactForm";
+import { 
+  Sprout, Target, Handshake, Sun, Wheat, Leaf, TrendingUp, Home, Briefcase, 
+  Users, Microscope, MapPin, RefreshCcw, Building, CheckCircle2, ArrowRight 
+} from "lucide-react";
 
 const trustMetrics = [
   { label: "支援対象", value: "自治体・企業" },
@@ -13,21 +17,21 @@ const businessPillars = [
     title: "営農型太陽光発電",
     body: "農地活用と再生可能エネルギー導入を両立させ、地域経済と脱炭素の両面から事業化を支援します。",
     points: ["候補地整理", "制度・合意形成支援", "導入計画の策定"],
-    icon: "☀️",
+    icon: Sun,
     image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80"
   },
   {
     title: "CO2 削減ソリューション",
     body: "森林・海藻・飼料など複数の手段を組み合わせ、自治体・企業ごとに実行可能な削減計画へ落とし込みます。",
     points: ["削減テーマ整理", "実証設計", "KPI・開示指標の整理"],
-    icon: "🌿",
+    icon: Leaf,
     image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80"
   },
   {
     title: "農業・資材・バイオマス支援",
     body: "主軸事業を補完するかたちで、資材供給、バイオマス燃料、周辺ソリューションの導入を支援します。",
     points: ["資材調達", "周辺事業設計", "運用体制づくり"],
-    icon: "🌾",
+    icon: Wheat,
     image: "https://images.unsplash.com/photo-1625246333195-f81961856161?w=600&q=80"
   }
 ];
@@ -36,19 +40,19 @@ const sustainabilityItems = [
   {
     title: "数値で語れる脱炭素",
     body: "CO2 削減量、対象領域、対象地域など、初期段階から説明責任を果たせる指標設計を重視します。",
-    icon: "📊",
+    icon: TrendingUp,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
   },
   {
     title: "地域に残る仕組みづくり",
     body: "単発の実証で終わらせず、地域雇用・運営体制・継続予算まで見据えた実装を進めます。",
-    icon: "🏘️",
+    icon: Home,
     image: "https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=600&q=80"
   },
   {
     title: "企業の事業性との両立",
     body: "ESG だけでなく、投資判断・調達要件・供給安定性まで見据えた B2B 設計を行います。",
-    icon: "💼",
+    icon: Briefcase,
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
   }
 ];
@@ -57,13 +61,13 @@ const collaborationItems = [
   {
     title: "自治体 × 企業 × 現場の三者連携",
     body: "行政計画、企業ニーズ、現場運用のギャップを埋め、実行可能な体制を組成します。",
-    icon: "🤝",
+    icon: Users,
     image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
   },
   {
     title: "共同検証パートナーとの推進",
     body: "外部の研究・検証パートナーと連携し、実証の精度と再現性を高めながら事業化を進めます。",
-    icon: "🔬",
+    icon: Microscope,
     image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80"
   }
 ];
@@ -72,19 +76,19 @@ const aboutCards = [
   {
     title: "自治体・企業への実行支援",
     body: "計画立案から現場実装まで、行政と企業の双方に向けた実行可能な提案と伴走型サポートを行います。",
-    icon: "🤝",
+    icon: Handshake,
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80"
   },
   {
     title: "農地と再エネの両立設計",
     body: "営農型太陽光を主軸に、農業機能を守りながら地域の脱炭素化を推進。農地活用と事業性を両立します。",
-    icon: "☀️",
+    icon: Sun,
     image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80"
   },
   {
     title: "CO2 削減の可視化と信頼性",
     body: "削減量・根拠・指標を整理し、行政の計画策定・企業の ESG 開示に耐える水準で数値を提示します。",
-    icon: "📊",
+    icon: TrendingUp,
     image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=600&q=80"
   }
 ];
@@ -111,7 +115,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6 py-32">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="tag mb-8 inline-block">🌱 B2B / Local Government / Enterprise</span>
+              <span className="tag mb-8 inline-block"><Sprout className="w-4 h-4 inline mr-1" /> B2B / Local Government / Enterprise</span>
               <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight text-white mb-8">
                 地域課題を、<br />
                 <span className="text-brand-200">事業として</span><br />
@@ -123,7 +127,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a href="#contact" className="btn-primary">
-                  導入相談をする →
+                  導入相談をする <ArrowRight className="w-5 h-5 inline ml-1" />
                 </a>
                 <a href="#business" className="btn-secondary">
                   事業を見る
@@ -142,8 +146,8 @@ export default function Home() {
             <div>
               <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-2xl">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-deep flex items-center justify-center text-2xl">
-                    🎯
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-deep flex items-center justify-center">
+                    <Target className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-wider text-brand-200">Why Agri Zipang</p>
@@ -152,14 +156,14 @@ export default function Home() {
                 </div>
                 <ul className="space-y-4">
                   {[
-                    { icon: '🌾', text: '農地・再エネ・脱炭素を一つの事業として設計' },
-                    { icon: '🏛️', text: '自治体計画・企業 ESG ニーズの双方に対応' },
-                    { icon: '🔄', text: '構想整理から実証・運用まで伴走型で支援' },
-                    { icon: '📍', text: '栃木県を起点とした地域密着の実行体制' }
-                  ].map((item, i) => (
+                    { icon: Wheat, text: '農地・再エネ・脱炭素を一つの事業として設計' },
+                    { icon: Building, text: '自治体計画・企業 ESG ニーズの双方に対応' },
+                    { icon: RefreshCcw, text: '構想整理から実証・運用まで伴走型で支援' },
+                    { icon: MapPin, text: '栃木県を起点とした地域密着の実行体制' }
+                  ].map((Item, i) => (
                     <li key={i} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition">
-                      <span className="text-2xl">{item.icon}</span>
-                      <span className="text-white/90">{item.text}</span>
+                      <Item.icon className="w-6 h-6 text-brand-200 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">{Item.text}</span>
                     </li>
                   ))}
                 </ul>
@@ -195,7 +199,9 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <div className="text-4xl mb-4">{card.icon}</div>
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center mb-4">
+                  <card.icon className="w-7 h-7 text-deep" />
+                </div>
                 <h3 className="text-xl font-bold text-deep mb-3">{card.title}</h3>
                 <p className="text-sm leading-7 text-slate-600">{card.body}</p>
               </div>
@@ -230,13 +236,15 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center mb-4">
+                    <item.icon className="w-7 h-7 text-deep" />
+                  </div>
                   <h3 className="text-xl font-bold text-deep mb-3">{item.title}</h3>
                   <p className="text-sm leading-7 text-slate-600 mb-4">{item.body}</p>
                   <ul className="space-y-2 text-sm text-slate-600">
                     {item.points.map((point) => (
                       <li key={point} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+                        <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
                         {point}
                       </li>
                     ))}
@@ -280,18 +288,10 @@ export default function Home() {
           <div className="space-y-6">
             {sustainabilityItems.map((item) => (
               <div key={item.title} className="card flex items-start gap-4 group">
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden image-zoom flex-shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    className="transition-transform duration-500"
-                    sizes="80px"
-                  />
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-8 h-8 text-deep" />
                 </div>
                 <div>
-                  <div className="text-2xl mb-2">{item.icon}</div>
                   <h3 className="text-xl font-bold text-deep">{item.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-slate-600">{item.body}</p>
                 </div>
@@ -345,7 +345,9 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6 flex items-start gap-4">
-                  <span className="text-3xl">{item.icon}</span>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-7 h-7 text-deep" />
+                  </div>
                   <div>
                     <h3 className="text-xl font-bold text-deep mb-2">{item.title}</h3>
                     <p className="text-sm leading-7 text-slate-600">{item.body}</p>
@@ -425,8 +427,8 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-deep mb-6">お問い合わせ先</h3>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-2xl flex-shrink-0">
-                  📧
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">📧</span>
                 </div>
                 <div>
                   <p className="font-semibold text-deep mb-1">メール</p>
@@ -434,8 +436,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-2xl flex-shrink-0">
-                  🕐
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🕐</span>
                 </div>
                 <div>
                   <p className="font-semibold text-deep mb-1">対応時間</p>
@@ -443,8 +445,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-2xl flex-shrink-0">
-                  💬
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand/20 to-deep/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">💬</span>
                 </div>
                 <div>
                   <p className="font-semibold text-deep mb-1">主なご相談</p>
