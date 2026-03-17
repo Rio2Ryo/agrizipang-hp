@@ -17,24 +17,46 @@ const notoSerif = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: "アグリ・ジパング | 地域と企業をつなぐ農業共創プラットフォーム",
+  title: "アグリ・ジパング | 営農型太陽光発電・CO2削減ソリューション",
   description:
-    "アグリ・ジパングは、自治体と企業の共創を通じて持続可能な農業と地域経済を推進するB2B向けプラットフォームです。調達、実証、拠点づくりまで一気通貫で支援します。",
+    "農事組合法人アグリ・ジパングは、栃木県宇都宮市を拠点に営農型太陽光発電とCO2削減ソリューションを提供。自治体・企業への実行支援から運用まで一気通貫で伴走します。",
   keywords: [
     "アグリ・ジパング",
-    "自治体",
-    "企業連携",
-    "農業DX",
-    "持続可能性",
-    "地域創生",
-    "B2B"
+    "営農型太陽光発電",
+    "CO2削減",
+    "自治体連携",
+    "地域脱炭素",
+    "農業共創",
+    "栃木県",
+    "宇都宮市",
+    "B2B",
+    "ESG"
   ],
   openGraph: {
-    title: "アグリ・ジパング",
+    title: "アグリ・ジパング | 営農型太陽光発電・CO2削減ソリューション",
     description:
-      "自治体と企業の共創で、持続可能な農業と地域経済を推進するB2Bプラットフォーム。",
+      "栃木県宇都宮市を拠点に、営農型太陽光発電とCO2削減ソリューションで自治体・企業の脱炭素を支援します。",
     type: "website",
-    locale: "ja_JP"
+    url: "https://agrizipang-hp.vercel.app",
+    siteName: "アグリ・ジパング",
+    locale: "ja_JP",
+    images: [
+      {
+        url: "https://agrizipang-hp.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "アグリ・ジパング"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "アグリ・ジパング | 営農型太陽光発電・CO2削減ソリューション",
+    description:
+      "栃木県宇都宮市を拠点に、営農型太陽光発電とCO2削減ソリューションで自治体・企業の脱炭素を支援します。"
+  },
+  icons: {
+    icon: "/favicon.ico"
   },
   robots: {
     index: true,

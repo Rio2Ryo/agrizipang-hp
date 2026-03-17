@@ -1,3 +1,4 @@
+import Image from "next/image";
 import NavBar from "./components/NavBar";
 import ContactForm from "./components/ContactForm";
 
@@ -190,12 +191,14 @@ export default function Home() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {aboutCards.map((card) => (
             <div key={card.title} className="card !p-0 overflow-hidden">
-              <div className="h-40 w-full overflow-hidden">
-                <img
+              <div className="relative h-40 w-full overflow-hidden">
+                <Image
                   src={card.image}
                   alt={card.title}
-                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="transition-transform duration-300 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-6">
@@ -224,12 +227,14 @@ export default function Home() {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {businessPillars.map((item) => (
               <div key={item.title} className="card !p-0 flex h-full flex-col overflow-hidden">
-                <div className="h-48 w-full overflow-hidden">
-                  <img
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-300 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
@@ -272,12 +277,14 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
             {sustainabilityItems.map((item) => (
               <div key={item.title} className="card !p-0 overflow-hidden">
-                <div className="h-32 w-full overflow-hidden">
-                  <img
+                <div className="relative h-32 w-full overflow-hidden">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-300 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="flex items-start gap-4 p-6">
@@ -326,12 +333,14 @@ export default function Home() {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {collaborationItems.map((item) => (
               <div key={item.title} className="card !p-0 overflow-hidden">
-                <div className="h-40 w-full overflow-hidden">
-                  <img
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-300 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="flex items-start gap-4 p-6">
