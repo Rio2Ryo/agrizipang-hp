@@ -86,10 +86,10 @@ const aboutCards = [
 ];
 
 const kpiMetrics = [
-  { label: "CO2 削減量", value: "—", unit: "トン/年", note: "実証案件実績（公開準備中）" },
-  { label: "発電規模", value: "—", unit: "kW", note: "営農型太陽光" },
+  { label: "CO2 削減量", value: "準備中", unit: "トン/年", note: "実証案件実績（公開予定）" },
+  { label: "発電規模", value: "準備中", unit: "kW", note: "営農型太陽光" },
   { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
-  { label: "設立", value: "2019", unit: "年", note: "農事組合法人として設立" }
+  { label: "設立", value: "2019", unit: "年", note: "農事組合法人" }
 ];
 
 import NavBar from "./components/NavBar";
@@ -368,7 +368,7 @@ export default function Home() {
               <span className="font-semibold text-deep">所在地</span>
               <span className="text-slate-600">栃木県</span>
               <span className="font-semibold text-deep">設立</span>
-              <span className="text-slate-600">20XX 年 XX 月</span>
+              <span className="text-slate-600">2019 年（農事組合法人）</span>
               <span className="font-semibold text-deep">事業内容</span>
               <span className="text-slate-600">営農型太陽光発電事業、CO2 削減ソリューション、農業支援</span>
               <span className="font-semibold text-deep">連絡先</span>
