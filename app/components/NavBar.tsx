@@ -35,7 +35,7 @@ export default function NavBar() {
           <a href="#" className="flex items-center gap-2 flex-shrink-0">
             {/* Generated logo */}
             <Image
-              src="/images/logo-new.jpg"
+              src="/images/logo.png"
               alt="アグリ・ジパング"
               width={120}
               height={40}
