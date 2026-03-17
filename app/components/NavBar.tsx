@@ -1,19 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Business", href: "#business" },
-  { label: "Sustainability", href: "#sustainability" },
-  { label: "Collaboration", href: "#collaboration" },
-  { label: "Company", href: "#company" },
-  { label: "Contact", href: "#contact" },
+  { key: "about", href: "#about" },
+  { key: "business", href: "#business" },
+  { key: "sustainability", href: "#sustainability" },
+  { key: "collaboration", href: "#collaboration" },
+  { key: "company", href: "#company" },
+  { key: "contact", href: "#contact" },
 ];
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -40,17 +42,32 @@ export default function NavBar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
+            {navLinks.map((item) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={item.href}
+                href={item.href}
                 className={`text-sm font-medium transition-colors hover:text-brand ${
                   scrolled ? "text-slate-700" : "text-white/90"
                 }`}
               >
-                {link.label}
+                {t.nav[item.key as keyof typeof t.nav]}
               </a>
             ))}
+
+            {/* Language toggle */}
+            <button
+              onClick={() => setLang(lang === "ja" ? "en" : "ja")}
+              className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${
+                scrolled
+                  ? "border-deep/30 text-deep hover:bg-deep/5"
+                  : "border-white/30 text-white/90 hover:bg-white/10"
+              }`}
+              aria-label="Switch language"
+            >
+              {lang === "ja" ? "EN" : "JA"}
+            </button>
+
+            {/* CTA button */}
             <a
               href="#contact"
               className={`rounded-full px-5 py-2 text-sm font-semibold transition-all ${
@@ -59,7 +76,7 @@ export default function NavBar() {
                   : "bg-white text-deep hover:bg-white/90"
               }`}
             >
-              導入相談
+              {t.nav.cta}
             </a>
           </nav>
 
@@ -70,9 +87,21 @@ export default function NavBar() {
             aria-label="メニューを開く"
             aria-expanded={open}
           >
-            <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${open ? "translate-y-1.5 rotate-45" : "mb-1.5"}`} />
-            <span className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${open ? "opacity-0 mb-0" : "mb-1.5"}`} />
-            <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
+            <span
+              className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${
+                open ? "translate-y-1.5 rotate-45" : "mb-1.5"
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${
+                open ? "opacity-0 mb-0" : "mb-1.5"
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${
+                open ? "-translate-y-1.5 -rotate-45" : ""
+              }`}
+            />
           </button>
         </div>
       </div>
@@ -80,22 +109,35 @@ export default function NavBar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-white border-t border-deep/10 px-6 py-4 shadow-soft">
-          {navLinks.map((link) => (
+          {navLinks.map((item) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={item.href}
+              href={item.href}
               className="block py-3 text-sm font-medium text-slate-700 hover:text-brand border-b border-deep/5 last:border-0"
               onClick={() => setOpen(false)}
             >
-              {link.label}
+              {t.nav[item.key as keyof typeof t.nav]}
             </a>
           ))}
+
+          {/* Mobile language toggle */}
+          <div className="mt-4 mb-2 flex">
+            <button
+              onClick={() => setLang(lang === "ja" ? "en" : "ja")}
+              className="text-xs font-semibold px-4 py-2 rounded-full border border-deep/30 text-deep hover:bg-deep/5 transition-all"
+              aria-label="Switch language"
+            >
+              {lang === "ja" ? "EN" : "JA"}
+            </button>
+          </div>
+
+          {/* Mobile CTA */}
           <a
             href="#contact"
-            className="mt-4 block rounded-full bg-deep px-5 py-3 text-center text-sm font-semibold text-white hover:bg-deep/90 transition-colors"
+            className="mt-2 block rounded-full bg-deep px-5 py-3 text-center text-sm font-semibold text-white hover:bg-deep/90 transition-colors"
             onClick={() => setOpen(false)}
           >
-            導入相談をする
+            {t.nav.cta}
           </a>
         </div>
       )}

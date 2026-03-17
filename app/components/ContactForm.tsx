@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
+import { CheckCircle2 } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -14,6 +16,7 @@ interface FormData {
 const INITIAL: FormData = { org: "", name: "", email: "", message: "" };
 
 export default function ContactForm() {
+  const { t } = useLanguage();
   const [form, setForm] = useState<FormData>(INITIAL);
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -26,7 +29,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setErrorMsg("ご担当者名・メールアドレス・ご相談内容は必須です。");
+      setErrorMsg(t.form.errRequired);
       setState("error");
       return;
     }
@@ -43,7 +46,7 @@ export default function ContactForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        setErrorMsg(data.error ?? "送信に失敗しました。");
+        setErrorMsg(data.error ?? t.form.errSend);
         setState("error");
         return;
       }
@@ -51,60 +54,70 @@ export default function ContactForm() {
       setState("success");
       setForm(INITIAL);
     } catch {
-      setErrorMsg("ネットワークエラーが発生しました。時間をおいて再度お試しください。");
+      setErrorMsg(t.form.errNetwork);
       setState("error");
     }
   };
 
   if (state === "success") {
     return (
-      <div className="card flex flex-col items-center justify-center gap-4 py-16 text-center">
-        <span className="text-5xl">✅</span>
-        <h3 className="text-xl font-bold text-deep">送信が完了しました</h3>
-        <p className="max-w-sm text-sm leading-7 text-slate-600">
-          お問い合わせを受け付けました。<br />
-          担当者より折り返しご連絡いたします。
+      <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-8 flex flex-col items-center justify-center gap-5 py-16 text-center">
+        <div className="w-16 h-16 rounded-full bg-brand/20 flex items-center justify-center">
+          <CheckCircle2 className="w-9 h-9 text-brand-200" />
+        </div>
+        <h3 className="text-xl font-bold text-white">{t.form.successTitle}</h3>
+        <p className="max-w-sm text-sm leading-7 text-white/70 whitespace-pre-line">
+          {t.form.successBody}
         </p>
         <button
           onClick={() => setState("idle")}
-          className="mt-4 rounded-full border border-deep/30 px-6 py-2 text-sm font-semibold text-deep transition hover:bg-deep/5"
+          className="mt-2 rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
         >
-          別のお問い合わせをする
+          {t.form.reset}
         </button>
       </div>
     );
   }
 
+  const inputClass =
+    "mt-2 w-full rounded-xl border border-slate-300/40 bg-white/90 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/20";
+
+  const labelClass = "block text-sm font-semibold text-white/90";
+
   return (
-    <form className="card space-y-5" onSubmit={handleSubmit} noValidate>
+    <form
+      className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-6 space-y-5"
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <div>
-        <label htmlFor="org" className="text-sm font-semibold text-deep">
-          団体・企業名
+        <label htmlFor="org" className={labelClass}>
+          {t.form.org}
         </label>
         <input
           id="org"
           value={form.org}
           onChange={set("org")}
-          className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand"
-          placeholder="例）〇〇市役所 / 〇〇株式会社"
+          className={inputClass}
+          placeholder={t.form.orgPlaceholder}
         />
       </div>
       <div>
-        <label htmlFor="name" className="text-sm font-semibold text-deep">
-          ご担当者名 <span className="text-red-500">*</span>
+        <label htmlFor="name" className={labelClass}>
+          {t.form.name} <span className="text-red-400">*</span>
         </label>
         <input
           id="name"
           value={form.name}
           onChange={set("name")}
           required
-          className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand"
-          placeholder="例）山田 太郎"
+          className={inputClass}
+          placeholder={t.form.namePlaceholder}
         />
       </div>
       <div>
-        <label htmlFor="email" className="text-sm font-semibold text-deep">
-          メールアドレス <span className="text-red-500">*</span>
+        <label htmlFor="email" className={labelClass}>
+          {t.form.email} <span className="text-red-400">*</span>
         </label>
         <input
           id="email"
@@ -112,13 +125,13 @@ export default function ContactForm() {
           value={form.email}
           onChange={set("email")}
           required
-          className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand"
-          placeholder="example@company.jp"
+          className={inputClass}
+          placeholder={t.form.emailPlaceholder}
         />
       </div>
       <div>
-        <label htmlFor="message" className="text-sm font-semibold text-deep">
-          ご相談内容 <span className="text-red-500">*</span>
+        <label htmlFor="message" className={labelClass}>
+          {t.form.message} <span className="text-red-400">*</span>
         </label>
         <textarea
           id="message"
@@ -126,13 +139,13 @@ export default function ContactForm() {
           value={form.message}
           onChange={set("message")}
           required
-          className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand"
-          placeholder="対象地域、検討中テーマ、想定している連携内容などをご記入ください。"
+          className={inputClass}
+          placeholder={t.form.messagePlaceholder}
         />
       </div>
 
       {state === "error" && errorMsg && (
-        <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-600">
+        <p className="rounded-xl bg-red-900/40 border border-red-400/30 px-4 py-3 text-sm text-red-300">
           {errorMsg}
         </p>
       )}
@@ -140,12 +153,12 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === "loading"}
-        className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90 disabled:opacity-60"
+        className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90 disabled:opacity-60 shadow-lg shadow-brand/20"
       >
-        {state === "loading" ? "送信中…" : "相談内容を送信する"}
+        {state === "loading" ? t.form.submitting : t.form.submit}
       </button>
-      <p className="text-xs text-slate-400">
-        * は必須項目です。平日 9:00–18:00 以内にご返信いたします。
+      <p className="text-xs text-white/40">
+        {t.form.required}
       </p>
     </form>
   );
