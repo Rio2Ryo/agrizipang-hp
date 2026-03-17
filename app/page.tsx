@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import NavBar from "./components/NavBar";
 import ContactForm from "./components/ContactForm";
@@ -39,6 +40,23 @@ const contactInfoIcons = [Mail, Clock, MessageSquare] as const;
 function HomePage() {
   const { t } = useLanguage();
 
+  // Scroll-reveal via IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("revealed");
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const navItems = [
     { id: "about", label: t.nav.about },
     { id: "business", label: t.nav.business },
@@ -55,9 +73,9 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Hero Section
       ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-[#0f2007] via-[#1a3508] to-[#0d1c05]">
+      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-[#0b1a05] via-[#152c08] to-[#0d1c05]">
 
-        {/* SVG geometric pattern overlay */}
+        {/* SVG diagonal-grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.07]">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -77,18 +95,62 @@ function HomePage() {
         {/* Ambient glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-3xl animate-pulse"
-            style={{ background: "radial-gradient(circle, rgba(74,144,226,0.18), transparent 70%)" }}
+            className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-3xl animate-glow-pulse"
+            style={{ background: "radial-gradient(circle, rgba(74,144,226,0.22), transparent 70%)" }}
           />
           <div
-            className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] rounded-full blur-3xl animate-pulse"
-            style={{ background: "radial-gradient(circle, rgba(45,80,22,0.25), transparent 70%)", animationDelay: "1.5s" }}
+            className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] rounded-full blur-3xl animate-glow-pulse"
+            style={{ background: "radial-gradient(circle, rgba(45,80,22,0.3), transparent 70%)", animationDelay: "1.5s" }}
           />
-          {/* Solar energy accent: warm amber glow top-right */}
+          {/* Warm amber accent */}
           <div
-            className="absolute top-10 right-16 w-64 h-64 rounded-full blur-3xl opacity-30"
-            style={{ background: "radial-gradient(circle, rgba(232,134,26,0.35), transparent 70%)" }}
+            className="absolute top-10 right-16 w-72 h-72 rounded-full blur-3xl opacity-25"
+            style={{ background: "radial-gradient(circle, rgba(232,134,26,0.4), transparent 70%)" }}
           />
+        </div>
+
+        {/* Decorative floating shapes */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Top-left floating circle */}
+          <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full border border-white/[0.06] animate-float-slow" />
+          {/* Bottom-right floating arc */}
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full border border-white/[0.05] animate-float-rev" />
+          {/* Mid-left small accent dot cluster */}
+          <svg
+            className="absolute left-8 top-1/2 -translate-y-1/2 opacity-[0.12] animate-float"
+            width="80" height="80" viewBox="0 0 80 80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {[0,1,2,3,4].map((row) =>
+              [0,1,2,3,4].map((col) => (
+                <circle
+                  key={`${row}-${col}`}
+                  cx={col * 16 + 8}
+                  cy={row * 16 + 8}
+                  r="1.5"
+                  fill="white"
+                />
+              ))
+            )}
+          </svg>
+          {/* Mid-right small accent dot cluster */}
+          <svg
+            className="absolute right-12 bottom-1/3 opacity-[0.10] animate-float-rev"
+            width="60" height="60" viewBox="0 0 60 60"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {[0,1,2,3].map((row) =>
+              [0,1,2,3].map((col) => (
+                <circle
+                  key={`${row}-${col}`}
+                  cx={col * 16 + 8}
+                  cy={row * 16 + 8}
+                  r="1.5"
+                  fill="white"
+                />
+              ))
+            )}
+          </svg>
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 w-full">
@@ -96,48 +158,67 @@ function HomePage() {
 
             {/* Left: copy */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/90 backdrop-blur-sm mb-8">
-                <Sprout className="w-3.5 h-3.5 text-brand-200" />
-                {t.hero.badge}
-              </span>
-              <h1 className="font-serif text-5xl md:text-7xl font-bold leading-[1.1] text-white mb-6">
-                {t.hero.title[0]}<br />
-                <span className="text-brand-200">{t.hero.title[1]}</span><br />
-                {t.hero.title[2]}
+              {/* Badge — hero-1 */}
+              <div className="hero-1">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/90 backdrop-blur-sm mb-8 shadow-sm">
+                  <Sprout className="w-3.5 h-3.5 text-brand-200" />
+                  {t.hero.badge}
+                </span>
+              </div>
+
+              {/* H1 — hero-2 */}
+              <h1 className="hero-2 font-serif text-6xl md:text-8xl font-black tracking-tighter leading-[0.95] mb-6">
+                <span className="text-white">{t.hero.title[0]}</span><br />
+                <span className="bg-gradient-to-r from-brand-200 via-white/90 to-brand bg-clip-text text-transparent">
+                  {t.hero.title[1]}
+                </span><br />
+                <span className="text-white">{t.hero.title[2]}</span>
               </h1>
-              <div className="w-16 h-1 bg-gradient-to-r from-brand-200 to-transparent mb-8 rounded-full" />
-              <p className="text-xl leading-relaxed text-white/80 mb-10 max-w-xl">
-                {t.hero.subtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-14">
-                <a href="#contact" className="btn-primary">
+
+              {/* Accent bar — hero-3 */}
+              <div className="hero-3">
+                <div className="w-20 h-1 bg-gradient-to-r from-brand-200 via-brand/60 to-transparent mb-8 rounded-full" />
+                <p className="text-xl leading-relaxed text-white/75 mb-10 max-w-xl">
+                  {t.hero.subtitle}
+                </p>
+              </div>
+
+              {/* CTAs — hero-4 */}
+              <div className="hero-4 flex flex-col sm:flex-row gap-4 mb-14">
+                <a href="#contact" className="group btn-primary hover-ring">
+                  <span className="shine-sweep" />
                   {t.hero.ctaPrimary}
-                  <ArrowRight className="w-5 h-5 ml-2 inline-block" />
+                  <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
                 <a href="#business" className="btn-secondary">
                   {t.hero.ctaSecondary}
                 </a>
               </div>
 
-              {/* Trust metrics */}
-              <div className="grid grid-cols-3 pt-8 border-t border-white/20">
+              {/* Trust metrics — hero-5 */}
+              <div className="hero-5 grid grid-cols-3 pt-8 border-t border-white/[0.15]">
                 {t.hero.metrics.map((item, i) => (
                   <div
                     key={item.label}
-                    className={`${i > 0 ? "border-l border-white/20 pl-6" : ""} ${i < 2 ? "pr-6" : ""}`}
+                    className={`${i > 0 ? "border-l border-white/[0.15] pl-6" : ""} ${i < 2 ? "pr-6" : ""}`}
                   >
-                    <p className="text-xs uppercase tracking-wider text-white/50 mb-1">{item.label}</p>
-                    <p className="text-sm font-bold text-white leading-snug">{item.value}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1">{item.label}</p>
+                    <p className="text-sm font-bold text-white leading-snug bg-gradient-to-r from-brand-200 to-white bg-clip-text text-transparent">
+                      {item.value}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right: Why card */}
-            <div>
-              <div className="bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 p-8 shadow-2xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand/60 flex items-center justify-center shadow-lg">
+            {/* Right: Why card — glassmorphism + float */}
+            <div className="hero-3">
+              <div className="group relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/[0.12] p-8 shadow-2xl animate-float">
+                {/* Shine sweep overlay */}
+                <div className="shine-sweep rounded-3xl" />
+
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand/60 flex items-center justify-center shadow-lg shadow-brand/30">
                     <Target className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -145,21 +226,23 @@ function HomePage() {
                     <h2 className="text-xl font-bold text-white">{t.hero.whySubtitle}</h2>
                   </div>
                 </div>
-                <ul className="space-y-3">
+
+                <ul className="space-y-3 relative z-10">
                   {t.hero.reasons.map((reason, i) => {
                     const Icon = whyIcons[i];
                     return (
-                      <li key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10">
+                      <li key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.05] border border-white/[0.08] transition-colors duration-200 hover:bg-white/[0.09]">
                         <div className="w-8 h-8 rounded-lg bg-brand/20 flex items-center justify-center flex-shrink-0">
                           <Icon className="w-4 h-4 text-brand-200" />
                         </div>
-                        <span className="text-sm text-white/90 leading-snug mt-0.5">{reason}</span>
+                        <span className="text-sm text-white/85 leading-snug mt-0.5">{reason}</span>
                       </li>
                     );
                   })}
                 </ul>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -167,10 +250,12 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          About Section — numbered cards, no images
+          About Section
       ══════════════════════════════════════════════ */}
       <section id="about" className="mx-auto max-w-7xl px-6 py-28">
-        <div className="max-w-3xl">
+
+        {/* Header — reveal */}
+        <div className="reveal max-w-3xl">
           <span className="tag mb-4">{t.about.tag}</span>
           <h2 className="section-title mb-6">{t.about.title}</h2>
           <p className="section-subtitle">{t.about.subtitle}</p>
@@ -179,20 +264,24 @@ function HomePage() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {t.about.cards.map((card, i) => {
             const Icon = aboutIcons[i];
+            const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
             return (
               <div
                 key={card.title}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl border-l-4 border-l-deep"
+                className={`group reveal ${delayClass} relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-l-[#2D5016] hover:shadow-[0_20px_60px_rgba(45,80,22,0.12)] border-l-4 border-l-deep`}
               >
-                {/* Number badge */}
-                <div className="absolute top-5 right-5 text-6xl font-serif font-bold text-deep/8 leading-none select-none">
+                {/* Shine sweep */}
+                <div className="shine-sweep" />
+
+                {/* Number watermark */}
+                <div className="absolute top-5 right-5 text-6xl font-serif font-bold text-deep/5 leading-none select-none">
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
-                <div className="p-8 pt-10">
+                <div className="p-8 pt-10 relative z-10">
                   {/* Icon chip */}
-                  <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full bg-gradient-to-r from-deep/8 to-brand/8 border border-deep/10">
-                    <Icon className="w-4 h-4 text-deep" />
+                  <div className="inline-flex items-center gap-2 mb-5 px-3 py-2 rounded-xl bg-gradient-to-r from-deep/10 to-brand/10 border border-deep/10 shadow-sm">
+                    <Icon className="w-5 h-5 text-deep" />
                     <span className="text-xs font-bold text-deep/60 uppercase tracking-wider">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -202,8 +291,8 @@ function HomePage() {
                   <p className="text-sm leading-7 text-slate-600">{card.body}</p>
                 </div>
 
-                {/* Bottom accent line that extends on hover */}
-                <div className="h-0.5 bg-gradient-to-r from-deep/40 to-brand/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Bottom accent line */}
+                <div className="h-0.5 bg-gradient-to-r from-deep/50 to-brand/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             );
           })}
@@ -213,11 +302,13 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Business Section — gradient header bands, no images
+          Business Section
       ══════════════════════════════════════════════ */}
       <section id="business" className="bg-slate-50/80 px-6 py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
+
+          {/* Header — reveal */}
+          <div className="reveal max-w-3xl">
             <span className="tag mb-4">{t.business.tag}</span>
             <h2 className="section-title mb-6">{t.business.title}</h2>
             <p className="section-subtitle">{t.business.subtitle}</p>
@@ -227,14 +318,17 @@ function HomePage() {
             {t.business.pillars.map((pillar, i) => {
               const Icon = businessIcons[i];
               const grad = businessGradients[i];
+              const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
               return (
                 <div
                   key={pillar.title}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                  className={`group/card reveal ${delayClass} bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(45,80,22,0.18)]`}
                 >
-                  {/* Colored gradient header band */}
-                  <div className={`bg-gradient-to-br ${grad} px-6 py-8 flex flex-col items-center text-center relative overflow-hidden`}>
-                    {/* Subtle grid pattern in header */}
+                  {/* Gradient header band */}
+                  <div className={`bg-gradient-to-br ${grad} px-6 py-10 flex flex-col items-center text-center relative overflow-hidden`}>
+                    {/* Shine sweep */}
+                    <div className="shine-sweep" />
+                    {/* Grid pattern */}
                     <div className="absolute inset-0 opacity-10">
                       <svg width="100%" height="100%">
                         <defs>
@@ -246,7 +340,7 @@ function HomePage() {
                       </svg>
                     </div>
                     <div className="relative z-10">
-                      <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-3 mx-auto shadow-lg">
+                      <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-3 mx-auto shadow-lg group-hover/card:scale-[1.02] transition-transform duration-500">
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/60">
@@ -268,6 +362,11 @@ function HomePage() {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Card number watermark */}
+                  <div className="absolute bottom-4 right-5 text-[6rem] font-serif font-bold text-white/20 leading-none select-none pointer-events-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
                 </div>
               );
             })}
@@ -283,18 +382,19 @@ function HomePage() {
       <section id="sustainability" className="mx-auto max-w-7xl px-6 py-28">
         <div className="grid gap-16 lg:grid-cols-2">
 
-          {/* Left column */}
-          <div>
+          {/* Left column — reveal */}
+          <div className="reveal">
             <span className="tag mb-4">{t.sustainability.tag}</span>
             <h2 className="section-title mb-6">{t.sustainability.title}</h2>
             <p className="section-subtitle mb-10">{t.sustainability.subtitle}</p>
 
             {/* KPI example box */}
-            <div className="rounded-2xl border border-brand/20 bg-gradient-to-br from-deep/5 via-brand/5 to-transparent p-7">
-              <p className="text-xs font-bold uppercase tracking-[0.15em] text-brand mb-5">
+            <div className="rounded-2xl border border-brand/20 bg-gradient-to-br from-deep/5 via-brand/5 to-transparent p-7 relative overflow-hidden">
+              <div className="shine-sweep group" />
+              <p className="text-xs font-bold uppercase tracking-[0.15em] text-brand mb-5 relative z-10">
                 {t.sustainability.kpiLabel}
               </p>
-              <ul className="space-y-3.5">
+              <ul className="space-y-3.5 relative z-10">
                 {t.sustainability.kpiItems.map((line) => (
                   <li key={line} className="flex items-center gap-3 text-sm text-slate-700">
                     <span className="w-2 h-2 rounded-full bg-gradient-to-br from-brand to-deep flex-shrink-0" />
@@ -309,10 +409,11 @@ function HomePage() {
           <div className="space-y-4">
             {t.sustainability.items.map((item, i) => {
               const Icon = sustainabilityIcons[i];
+              const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
               return (
                 <div
                   key={item.title}
-                  className="group flex items-start gap-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:border-deep/20"
+                  className={`group reveal ${delayClass} flex items-start gap-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:border-deep/20`}
                 >
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-deep/10 to-brand/10 border border-deep/10 flex items-center justify-center flex-shrink-0 group-hover:from-deep/15 group-hover:to-brand/15 transition-all">
                     <Icon className="w-7 h-7 text-deep" />
@@ -327,9 +428,9 @@ function HomePage() {
           </div>
         </div>
 
-        {/* KPI Metrics — larger, more prominent */}
+        {/* KPI Metrics */}
         <div className="mt-24">
-          <div className="flex items-center gap-4 justify-center mb-12">
+          <div className="reveal flex items-center gap-4 justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-slate-200" />
             <h3 className="text-center text-xl font-bold text-deep px-4 whitespace-nowrap">
               {t.sustainability.metricsHeading}
@@ -337,21 +438,24 @@ function HomePage() {
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-slate-200" />
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {t.sustainability.kpiMetrics.map((kpi) => (
-              <div
-                key={kpi.label}
-                className="rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-5">
-                  {kpi.label}
-                </p>
-                <div className="flex items-baseline justify-center gap-1.5 mb-1">
-                  <span className="text-5xl font-bold font-serif gradient-text">{kpi.value}</span>
-                  <span className="text-sm font-semibold text-brand">{kpi.unit}</span>
+            {t.sustainability.kpiMetrics.map((kpi, i) => {
+              const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"] as const)[i];
+              return (
+                <div
+                  key={kpi.label}
+                  className={`reveal ${delayClass} gradient-border-card rounded-2xl bg-white p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group`}
+                >
+                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-5">
+                    {kpi.label}
+                  </p>
+                  <div className="flex items-baseline justify-center gap-1.5 mb-1">
+                    <span className="text-6xl font-bold font-serif stat-number gradient-text">{kpi.value}</span>
+                    <span className="text-sm font-semibold text-brand">{kpi.unit}</span>
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">{kpi.note}</p>
                 </div>
-                <p className="mt-3 text-xs text-slate-400">{kpi.note}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -359,11 +463,11 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Collaboration Section — full-height gradient cards
+          Collaboration Section
       ══════════════════════════════════════════════ */}
       <section id="collaboration" className="bg-slate-50/80 px-6 py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
+          <div className="reveal max-w-3xl">
             <span className="tag mb-4">{t.collaboration.tag}</span>
             <h2 className="section-title mb-6">{t.collaboration.title}</h2>
             <p className="section-subtitle">{t.collaboration.subtitle}</p>
@@ -373,12 +477,26 @@ function HomePage() {
             {t.collaboration.items.map((item, i) => {
               const Icon = collaborationIcons[i];
               const grad = collaborationGradients[i];
+              const delayClass = (["reveal-delay-1", "reveal-delay-2"] as const)[i];
               return (
                 <div
                   key={item.title}
-                  className={`group relative bg-gradient-to-br ${grad} rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}
+                  className={`group reveal ${delayClass} relative bg-gradient-to-br ${grad} rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}
                 >
-                  {/* Background geometric accent */}
+                  {/* Shine sweep */}
+                  <div className="shine-sweep" />
+
+                  {/* Decorative top-right arc */}
+                  <svg
+                    className="absolute top-0 right-0 opacity-[0.08] pointer-events-none"
+                    width="120" height="120" viewBox="0 0 120 120"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="120" cy="0" r="80" fill="none" stroke="white" strokeWidth="1.5" />
+                    <circle cx="120" cy="0" r="50" fill="none" stroke="white" strokeWidth="1" />
+                  </svg>
+
+                  {/* Dot background */}
                   <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
                     <svg width="100%" height="100%">
                       <defs>
@@ -395,8 +513,8 @@ function HomePage() {
                     {String(i + 1).padStart(2, "0")}
                   </div>
 
-                  <div className="relative z-10 p-10 flex flex-col items-center text-center min-h-[280px] justify-center">
-                    <div className="w-20 h-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center mb-6 shadow-lg group-hover:bg-white/20 transition-all">
+                  <div className="relative z-10 p-10 flex flex-col items-center text-center min-h-[300px] justify-center">
+                    <div className="w-20 h-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500">
                       <Icon className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-4 leading-snug">{item.title}</h3>
@@ -415,7 +533,9 @@ function HomePage() {
           Company Section
       ══════════════════════════════════════════════ */}
       <section id="company" className="mx-auto max-w-7xl px-6 py-28">
-        <div className="max-w-3xl">
+
+        {/* Header — reveal */}
+        <div className="reveal max-w-3xl">
           <span className="tag mb-4">{t.company.tag}</span>
           <h2 className="section-title mb-6">{t.company.title}</h2>
           <p className="section-subtitle">{t.company.subtitle}</p>
@@ -423,10 +543,13 @@ function HomePage() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {/* Company info table */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-100">
+          <div className="reveal reveal-delay-1 bg-white rounded-2xl p-8 shadow-xl border border-slate-100">
             <div className="divide-y divide-slate-100 text-sm">
               {t.company.rows.map((row) => (
-                <div key={row.label} className="grid grid-cols-[140px_1fr] gap-4 py-4 items-start">
+                <div
+                  key={row.label}
+                  className="grid grid-cols-[140px_1fr] gap-4 py-4 items-start hover:bg-deep/[0.02] rounded-lg px-2 -mx-2 transition-colors duration-200"
+                >
                   <span className="font-semibold text-deep">{row.label}</span>
                   {"isEmail" in row && row.isEmail ? (
                     <a
@@ -443,8 +566,8 @@ function HomePage() {
             </div>
           </div>
 
-          {/* Access / location info panel — replaces broken iframe */}
-          <div className="bg-gradient-to-br from-deep/5 to-brand/5 rounded-2xl border border-deep/10 p-8 flex flex-col justify-between shadow-xl">
+          {/* Access / location panel */}
+          <div className="reveal reveal-delay-2 bg-gradient-to-br from-deep/5 to-brand/5 rounded-2xl border border-deep/10 p-8 flex flex-col justify-between shadow-xl">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-deep/10 flex items-center justify-center">
@@ -486,10 +609,27 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Map placeholder visual */}
-            <div className="mt-8 rounded-xl bg-white border border-deep/10 overflow-hidden shadow-inner h-32 flex items-center justify-center gap-3">
-              <MapPin className="w-6 h-6 text-deep/30" />
-              <span className="text-sm text-slate-400 font-medium">栃木県</span>
+            {/* Stylized map placeholder: dot-grid with pin */}
+            <div className="mt-8 rounded-xl bg-white border border-deep/10 overflow-hidden shadow-inner h-36 relative flex items-center justify-center">
+              {/* Dot grid background */}
+              <svg
+                className="absolute inset-0 w-full h-full opacity-[0.12]"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <pattern id="map-dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1.2" fill="#2D5016" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#map-dots)" />
+              </svg>
+              {/* Centered pin + label */}
+              <div className="relative z-10 flex flex-col items-center gap-1">
+                <div className="w-10 h-10 rounded-full bg-deep/10 border-2 border-deep/20 flex items-center justify-center shadow-md">
+                  <MapPin className="w-5 h-5 text-deep" />
+                </div>
+                <span className="text-xs font-semibold text-deep/60 tracking-wide">栃木県</span>
+              </div>
             </div>
           </div>
         </div>
@@ -498,7 +638,7 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Contact Section — 導入相談
+          Contact Section
       ══════════════════════════════════════════════ */}
       <section
         id="contact"
@@ -506,10 +646,12 @@ function HomePage() {
       >
         {/* Background patterns */}
         <div className="absolute inset-0 pattern-dots opacity-60 pointer-events-none" />
-        <div className="absolute top-0 left-0 w-[28rem] h-[28rem] rounded-full blur-3xl pointer-events-none opacity-20"
+        <div
+          className="absolute top-0 left-0 w-[28rem] h-[28rem] rounded-full blur-3xl pointer-events-none opacity-20"
           style={{ background: "radial-gradient(circle, #4A90E2, transparent 70%)" }}
         />
-        <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-15"
+        <div
+          className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-15"
           style={{ background: "radial-gradient(circle, #2D5016, transparent 70%)" }}
         />
 
@@ -519,7 +661,7 @@ function HomePage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm mb-6">
               {t.contact.badge}
             </span>
-            <h2 className="font-serif text-4xl font-bold tracking-tight text-white md:text-5xl mb-6">
+            <h2 className="font-serif text-4xl font-black tracking-tight text-white md:text-5xl mb-6">
               {t.contact.title}
             </h2>
             <p className="text-lg leading-8 text-white/70 max-w-2xl mx-auto">
@@ -528,45 +670,57 @@ function HomePage() {
           </div>
 
           {/* Contact info + form grid */}
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.6fr]">
+          <div className="reveal grid gap-8 lg:grid-cols-[1fr_1.6fr]">
 
             {/* Info panel */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-6">
-              <h3 className="text-lg font-bold text-white mb-6">{t.contact.infoTitle}</h3>
-              <div className="space-y-5">
-                {t.contact.infoItems.map((item, i) => {
-                  const Icon = contactInfoIcons[i];
-                  return (
-                    <div key={item.label} className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-brand/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Icon className="w-5 h-5 text-brand-200" />
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 border-t-2 border-t-brand/30 p-6 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-6">{t.contact.infoTitle}</h3>
+                <div className="space-y-5">
+                  {t.contact.infoItems.map((item, i) => {
+                    const Icon = contactInfoIcons[i];
+                    return (
+                      <div key={item.label} className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-brand/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Icon className="w-5 h-5 text-brand-200" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">
+                            {item.label}
+                          </p>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              className="text-sm text-brand-200 hover:text-white transition-colors"
+                            >
+                              {item.content}
+                            </a>
+                          ) : (
+                            <p className="text-sm text-white/80">{item.content}</p>
+                          )}
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">
-                          {item.label}
-                        </p>
-                        {item.href ? (
-                          <a
-                            href={item.href}
-                            className="text-sm text-brand-200 hover:text-white transition-colors"
-                          >
-                            {item.content}
-                          </a>
-                        ) : (
-                          <p className="text-sm text-white/80">{item.content}</p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+
+                {/* Separator note */}
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <p className="text-xs text-white/40 leading-6">
+                    導入相談・共同実証・提携のご相談など、
+                    <br />検討初期段階でもお気軽にお問い合わせください。
+                  </p>
+                </div>
               </div>
 
-              {/* Separator */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-xs text-white/40 leading-6">
-                  導入相談・共同実証・提携のご相談など、
-                  <br />検討初期段階でもお気軽にお問い合わせください。
-                </p>
+              {/* Response time badge */}
+              <div className="mt-6">
+                <div className="inline-flex items-center gap-2 rounded-full bg-brand/15 border border-brand/25 px-4 py-2">
+                  <Clock className="w-3.5 h-3.5 text-brand-200" />
+                  <span className="text-xs font-semibold text-brand-200 tracking-wide">
+                    通常 1〜2 営業日以内にご返信
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -579,11 +733,14 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Footer
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0f1f07] py-14 px-6 text-white">
+      <footer className="bg-[#0f1f07] border-t-2 border-t-deep/20 py-14 px-6 text-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-3 mb-10">
             <div>
-              <h3 className="text-xl font-serif font-bold mb-4">アグリ・ジパング</h3>
+              <h3 className="text-xl font-serif font-bold mb-4 flex items-center gap-2">
+                <Sprout className="w-5 h-5 text-brand-200" />
+                アグリ・ジパング
+              </h3>
               <p className="text-sm text-white/60 leading-7 whitespace-pre-line">
                 {t.footer.tagline}
               </p>
@@ -617,7 +774,7 @@ function HomePage() {
             </div>
           </div>
           <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
-            <p>{t.footer.copy}</p>
+            <p>© {new Date().getFullYear()} {t.footer.copy}</p>
             <p>{t.footer.org}</p>
           </div>
         </div>
