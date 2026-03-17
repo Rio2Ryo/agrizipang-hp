@@ -27,34 +27,34 @@ const contactInfoIcons = [Mail, Clock, MessageSquare] as const;
 
 // ─── Photo URLs ────────────────────────────────────────────────────────────────
 
-const HERO_PHOTO = "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=85";
+const HERO_PHOTO = "/images/hero-bg.png";
 
 const ABOUT_PHOTOS = [
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85",
-  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=85",
-  "https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=600&q=85",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=85",
+  "/images/about-consulting.png",
+  "/images/business-solar.png",
+  "/images/sustainability-community.png",
+  "/images/business-agriculture.png",
 ] as const;
 
 const ABOUT_PHOTO_ALTS = [
-  "consultation",
-  "solar and nature",
-  "countryside",
-  "city buildings",
+  "consulting",
+  "solar farm",
+  "community",
+  "agriculture",
 ] as const;
 
 const BUSINESS_PHOTOS = [
-  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=85",
-  "https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=85",
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&q=85",
+  "/images/business-solar.png",
+  "/images/business-co2.png",
+  "/images/business-agriculture.png",
 ] as const;
 
 const COLLAB_PHOTOS = [
-  "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=85",
-  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=85",
+  "/images/collaboration-partnership.png",
+  "/images/collaboration-research.png",
 ] as const;
 
-const KPI_BG_PHOTO = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80";
+const KPI_BG_PHOTO = "/images/sustainability-data.png";
 
 // ─── Inner page component (uses useLanguage) ──────────────────────────────────
 
@@ -694,16 +694,12 @@ function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-3 mb-10">
             <div>
-              <div className="flex items-center gap-2.5 mb-4">
-                <img src="/logo-mark.svg" alt="アグリ・ジパング" className="w-9 h-9" />
-                <div className="flex flex-col leading-tight">
-                  <span className="font-serif text-base font-bold text-white leading-tight">
-                    アグリ・ジパング
-                  </span>
-                  <span className="text-[9px] font-medium tracking-[0.18em] uppercase text-white/40">
-                    AGRI ZIPANG
-                  </span>
-                </div>
+              <div className="mb-4">
+                <img
+                  src="/images/logo.png"
+                  alt="アグリ・ジパング"
+                  className="h-10 w-auto object-contain brightness-0 invert"
+                />
               </div>
               <p className="text-sm text-white/60 leading-7 whitespace-pre-line">
                 {t.footer.tagline}
