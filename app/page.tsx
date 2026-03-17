@@ -614,7 +614,7 @@ function HomePage() {
           {/* Section header with logo mark */}
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <img src="/logo-mark.svg" alt="アグリ・ジパング" className="w-10 h-10 brightness-200" />
+              <img src="/images/logo.png" alt="アグリ・ジパング" className="h-10 w-auto object-contain brightness-0 invert" />
               <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
                 {t.contact.badge}
               </span>
