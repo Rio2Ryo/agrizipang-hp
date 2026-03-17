@@ -31,13 +31,28 @@ export default function NavBar() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-16 items-center justify-between">
-          <a
-            href="#"
-            className={`font-serif text-lg font-bold transition-colors ${
-              scrolled ? "text-deep" : "text-white"
-            }`}
-          >
-            アグリ・ジパング
+          <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
+            <img
+              src="/logo-mark.svg"
+              alt="アグリ・ジパング"
+              className={`w-8 h-8 transition-all ${scrolled ? "" : "brightness-200"}`}
+            />
+            <div className="flex flex-col leading-tight">
+              <span
+                className={`font-serif text-sm font-bold transition-colors leading-tight ${
+                  scrolled ? "text-deep" : "text-white"
+                }`}
+              >
+                アグリ・ジパング
+              </span>
+              <span
+                className={`text-[9px] font-medium tracking-[0.18em] uppercase transition-colors ${
+                  scrolled ? "text-deep/50" : "text-white/50"
+                }`}
+              >
+                AGRI ZIPANG
+              </span>
+            </div>
           </a>
 
           {/* Desktop nav */}

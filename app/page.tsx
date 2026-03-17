@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import NavBar from "./components/NavBar";
 import ContactForm from "./components/ContactForm";
@@ -16,24 +17,44 @@ const aboutIcons = [Handshake, Sun, TrendingUp] as const;
 
 const businessIcons = [Sun, Leaf, Wheat] as const;
 
-const businessGradients = [
-  "from-[#1a4010] to-[#2D5016]",
-  "from-[#0f3020] to-[#1a5030]",
-  "from-[#2a3010] to-[#3d4a18]",
-] as const;
-
 const sustainabilityIcons = [TrendingUp, HomeIcon, Briefcase] as const;
 
 const collaborationIcons = [Users, Microscope] as const;
 
-const collaborationGradients = [
-  "from-[#1a3508] via-[#2D5016] to-[#1e3b0a]",
-  "from-[#0f2820] via-[#1a4030] to-[#0d1c18]",
-] as const;
-
 const whyIcons = [Wheat, Building, RefreshCcw, MapPin] as const;
 
 const contactInfoIcons = [Mail, Clock, MessageSquare] as const;
+
+// ─── Photo URLs ────────────────────────────────────────────────────────────────
+
+const HERO_PHOTO = "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=85";
+
+const ABOUT_PHOTOS = [
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85",
+  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=85",
+  "https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=600&q=85",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=85",
+] as const;
+
+const ABOUT_PHOTO_ALTS = [
+  "consultation",
+  "solar and nature",
+  "countryside",
+  "city buildings",
+] as const;
+
+const BUSINESS_PHOTOS = [
+  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=85",
+  "https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=85",
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&q=85",
+] as const;
+
+const COLLAB_PHOTOS = [
+  "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=85",
+  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=85",
+] as const;
+
+const KPI_BG_PHOTO = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80";
 
 // ─── Inner page component (uses useLanguage) ──────────────────────────────────
 
@@ -71,178 +92,126 @@ function HomePage() {
       <NavBar />
 
       {/* ══════════════════════════════════════════════
-          Hero Section
+          Hero Section — full-screen photo background
       ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-[#0b1a05] via-[#152c08] to-[#0d1c05]">
+      <section className="relative overflow-hidden min-h-screen flex items-center">
 
-        {/* SVG diagonal-grid overlay */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.07]">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="diag-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-                <path d="M0 48 L48 0" stroke="white" strokeWidth="0.8" fill="none" />
-                <path d="M-12 48 L36 0" stroke="white" strokeWidth="0.4" fill="none" />
-                <path d="M12 48 L60 0" stroke="white" strokeWidth="0.4" fill="none" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#diag-grid)" />
-          </svg>
-        </div>
+        {/* Photo background */}
+        <Image
+          src={HERO_PHOTO}
+          alt="Agri solar farm aerial view"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
-        {/* Dot pattern */}
-        <div className="absolute inset-0 pattern-dots opacity-50 pointer-events-none" />
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#040d02]/90 via-[#0a1a04]/85 to-[#061505]/92" />
 
-        {/* Ambient glows */}
+        {/* Subtle dot pattern on top of overlay */}
+        <div className="absolute inset-0 pattern-dots opacity-40 pointer-events-none" />
+
+        {/* Ambient glow accents */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-3xl animate-glow-pulse"
-            style={{ background: "radial-gradient(circle, rgba(74,144,226,0.22), transparent 70%)" }}
+            style={{ background: "radial-gradient(circle, rgba(74,144,226,0.18), transparent 70%)" }}
           />
           <div
             className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] rounded-full blur-3xl animate-glow-pulse"
-            style={{ background: "radial-gradient(circle, rgba(45,80,22,0.3), transparent 70%)", animationDelay: "1.5s" }}
+            style={{ background: "radial-gradient(circle, rgba(45,80,22,0.28), transparent 70%)", animationDelay: "1.5s" }}
           />
-          {/* Warm amber accent */}
           <div
-            className="absolute top-10 right-16 w-72 h-72 rounded-full blur-3xl opacity-25"
-            style={{ background: "radial-gradient(circle, rgba(232,134,26,0.4), transparent 70%)" }}
+            className="absolute top-10 right-16 w-72 h-72 rounded-full blur-3xl opacity-20"
+            style={{ background: "radial-gradient(circle, rgba(232,134,26,0.35), transparent 70%)" }}
           />
         </div>
 
-        {/* Decorative floating shapes */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Top-left floating circle */}
-          <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full border border-white/[0.06] animate-float-slow" />
-          {/* Bottom-right floating arc */}
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full border border-white/[0.05] animate-float-rev" />
-          {/* Mid-left small accent dot cluster */}
-          <svg
-            className="absolute left-8 top-1/2 -translate-y-1/2 opacity-[0.12] animate-float"
-            width="80" height="80" viewBox="0 0 80 80"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {[0,1,2,3,4].map((row) =>
-              [0,1,2,3,4].map((col) => (
-                <circle
-                  key={`${row}-${col}`}
-                  cx={col * 16 + 8}
-                  cy={row * 16 + 8}
-                  r="1.5"
-                  fill="white"
-                />
-              ))
-            )}
-          </svg>
-          {/* Mid-right small accent dot cluster */}
-          <svg
-            className="absolute right-12 bottom-1/3 opacity-[0.10] animate-float-rev"
-            width="60" height="60" viewBox="0 0 60 60"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {[0,1,2,3].map((row) =>
-              [0,1,2,3].map((col) => (
-                <circle
-                  key={`${row}-${col}`}
-                  cx={col * 16 + 8}
-                  cy={row * 16 + 8}
-                  r="1.5"
-                  fill="white"
-                />
-              ))
-            )}
-          </svg>
-        </div>
+        {/* Main content — centered layout */}
+        <div className="relative z-10 mx-auto max-w-5xl px-6 py-36 w-full text-center">
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Badge pill — hero-1 */}
+          <div className="hero-1 flex justify-center mb-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/90 backdrop-blur-sm shadow-sm">
+              <Sprout className="w-3.5 h-3.5 text-brand-200" />
+              {t.hero.badge}
+            </span>
+          </div>
 
-            {/* Left: copy */}
-            <div>
-              {/* Badge — hero-1 */}
-              <div className="hero-1">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/90 backdrop-blur-sm mb-8 shadow-sm">
-                  <Sprout className="w-3.5 h-3.5 text-brand-200" />
-                  {t.hero.badge}
-                </span>
-              </div>
+          {/* H1 — hero-2 */}
+          <h1 className="hero-2 font-serif text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-black tracking-tighter leading-[0.9] mb-8">
+            <span className="text-white block">{t.hero.title[0]}</span>
+            <span className="block bg-gradient-to-r from-brand-200 via-white/90 to-brand bg-clip-text text-transparent">
+              {t.hero.title[1]}
+            </span>
+            <span className="text-white block">{t.hero.title[2]}</span>
+          </h1>
 
-              {/* H1 — hero-2 */}
-              <h1 className="hero-2 font-serif text-6xl md:text-8xl font-black tracking-tighter leading-[0.95] mb-6">
-                <span className="text-white">{t.hero.title[0]}</span><br />
-                <span className="bg-gradient-to-r from-brand-200 via-white/90 to-brand bg-clip-text text-transparent">
-                  {t.hero.title[1]}
-                </span><br />
-                <span className="text-white">{t.hero.title[2]}</span>
-              </h1>
+          {/* Accent bar + subtitle — hero-3 */}
+          <div className="hero-3 flex flex-col items-center">
+            <div className="w-20 h-1 bg-gradient-to-r from-brand-200 via-brand/60 to-transparent mb-8 rounded-full" />
+            <p className="text-xl leading-relaxed text-white/75 mb-10 max-w-2xl">
+              {t.hero.subtitle}
+            </p>
+          </div>
 
-              {/* Accent bar — hero-3 */}
-              <div className="hero-3">
-                <div className="w-20 h-1 bg-gradient-to-r from-brand-200 via-brand/60 to-transparent mb-8 rounded-full" />
-                <p className="text-xl leading-relaxed text-white/75 mb-10 max-w-xl">
-                  {t.hero.subtitle}
+          {/* CTAs — hero-4 */}
+          <div className="hero-4 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <a href="#contact" className="group btn-primary hover-ring">
+              <span className="shine-sweep" />
+              {t.hero.ctaPrimary}
+              <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+            <a href="#business" className="btn-secondary">
+              {t.hero.ctaSecondary}
+            </a>
+          </div>
+
+          {/* Trust metrics row — hero-5 */}
+          <div className="hero-5 inline-grid grid-cols-3 divide-x divide-white/15 border border-white/15 rounded-2xl bg-white/[0.05] backdrop-blur-sm px-2">
+            {t.hero.metrics.map((item) => (
+              <div key={item.label} className="px-6 py-4">
+                <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1">{item.label}</p>
+                <p className="text-sm font-bold bg-gradient-to-r from-brand-200 to-white bg-clip-text text-transparent leading-snug">
+                  {item.value}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* CTAs — hero-4 */}
-              <div className="hero-4 flex flex-col sm:flex-row gap-4 mb-14">
-                <a href="#contact" className="group btn-primary hover-ring">
-                  <span className="shine-sweep" />
-                  {t.hero.ctaPrimary}
-                  <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a href="#business" className="btn-secondary">
-                  {t.hero.ctaSecondary}
-                </a>
+        {/* Floating "Why Agri Zipang" card — lg+ only, absolute bottom-right */}
+        <div className="hidden lg:block absolute right-8 xl:right-16 bottom-16 w-96 z-20">
+          <div className="group relative bg-white/[0.07] backdrop-blur-2xl rounded-3xl border border-white/[0.14] p-8 shadow-2xl animate-float">
+            <div className="shine-sweep rounded-3xl" />
+
+            <div className="flex items-center gap-3 mb-6 relative z-10">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand/60 flex items-center justify-center shadow-lg shadow-brand/30 flex-shrink-0">
+                <Target className="w-6 h-6 text-white" />
               </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-brand-200">{t.hero.whyTitle}</p>
+                <h2 className="text-xl font-bold text-white">{t.hero.whySubtitle}</h2>
+              </div>
+            </div>
 
-              {/* Trust metrics — hero-5 */}
-              <div className="hero-5 grid grid-cols-3 pt-8 border-t border-white/[0.15]">
-                {t.hero.metrics.map((item, i) => (
-                  <div
-                    key={item.label}
-                    className={`${i > 0 ? "border-l border-white/[0.15] pl-6" : ""} ${i < 2 ? "pr-6" : ""}`}
+            <ul className="space-y-3 relative z-10">
+              {t.hero.reasons.map((reason, i) => {
+                const Icon = whyIcons[i];
+                return (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.05] border border-white/[0.08] transition-colors duration-200 hover:bg-white/[0.09]"
                   >
-                    <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1">{item.label}</p>
-                    <p className="text-sm font-bold text-white leading-snug bg-gradient-to-r from-brand-200 to-white bg-clip-text text-transparent">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Why card — glassmorphism + float */}
-            <div className="hero-3">
-              <div className="group relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/[0.12] p-8 shadow-2xl animate-float">
-                {/* Shine sweep overlay */}
-                <div className="shine-sweep rounded-3xl" />
-
-                <div className="flex items-center gap-3 mb-6 relative z-10">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand/60 flex items-center justify-center shadow-lg shadow-brand/30">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-brand-200">{t.hero.whyTitle}</p>
-                    <h2 className="text-xl font-bold text-white">{t.hero.whySubtitle}</h2>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 relative z-10">
-                  {t.hero.reasons.map((reason, i) => {
-                    const Icon = whyIcons[i];
-                    return (
-                      <li key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.05] border border-white/[0.08] transition-colors duration-200 hover:bg-white/[0.09]">
-                        <div className="w-8 h-8 rounded-lg bg-brand/20 flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-4 h-4 text-brand-200" />
-                        </div>
-                        <span className="text-sm text-white/85 leading-snug mt-0.5">{reason}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-
+                    <div className="w-8 h-8 rounded-lg bg-brand/20 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4 h-4 text-brand-200" />
+                    </div>
+                    <span className="text-sm text-white/85 leading-snug mt-0.5">{reason}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </section>
@@ -250,64 +219,69 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          About Section
+          About Section — Apple-style split
       ══════════════════════════════════════════════ */}
       <section id="about" className="mx-auto max-w-7xl px-6 py-28">
+        <div className="grid gap-16 lg:grid-cols-2 items-center">
 
-        {/* Header — reveal */}
-        <div className="reveal max-w-3xl">
-          <span className="tag mb-4">{t.about.tag}</span>
-          <h2 className="section-title mb-6">{t.about.title}</h2>
-          <p className="section-subtitle">{t.about.subtitle}</p>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {t.about.cards.map((card, i) => {
-            const Icon = aboutIcons[i];
-            const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
-            return (
-              <div
-                key={card.title}
-                className={`group reveal ${delayClass} relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-l-[#2D5016] hover:shadow-[0_20px_60px_rgba(45,80,22,0.12)] border-l-4 border-l-deep`}
-              >
-                {/* Shine sweep */}
-                <div className="shine-sweep" />
-
-                {/* Number watermark */}
-                <div className="absolute top-5 right-5 text-6xl font-serif font-bold text-deep/5 leading-none select-none">
-                  {String(i + 1).padStart(2, "0")}
+          {/* Left: 2×2 image mosaic */}
+          <div className="reveal">
+            <div className="grid grid-cols-2 gap-3 rounded-3xl overflow-hidden">
+              {ABOUT_PHOTOS.map((src, i) => (
+                <div key={src} className="relative aspect-square overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={ABOUT_PHOTO_ALTS[i]}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
                 </div>
+              ))}
+            </div>
+          </div>
 
-                <div className="p-8 pt-10 relative z-10">
-                  {/* Icon chip */}
-                  <div className="inline-flex items-center gap-2 mb-5 px-3 py-2 rounded-xl bg-gradient-to-r from-deep/10 to-brand/10 border border-deep/10 shadow-sm">
-                    <Icon className="w-5 h-5 text-deep" />
-                    <span className="text-xs font-bold text-deep/60 uppercase tracking-wider">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+          {/* Right: tag, heading, cards */}
+          <div>
+            <div className="reveal max-w-xl">
+              <span className="tag mb-4">{t.about.tag}</span>
+              <h2 className="section-title mb-6">{t.about.title}</h2>
+              <p className="section-subtitle mb-10">{t.about.subtitle}</p>
+            </div>
+
+            <div className="space-y-4">
+              {t.about.cards.map((card, i) => {
+                const Icon = aboutIcons[i];
+                const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
+                return (
+                  <div
+                    key={card.title}
+                    className={`group reveal ${delayClass} flex items-start gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:border-deep/20`}
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-deep/10 to-brand/10 border border-deep/10 flex items-center justify-center flex-shrink-0 group-hover:from-deep/15 group-hover:to-brand/15 transition-all">
+                      <Icon className="w-5 h-5 text-deep" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-deep mb-1 leading-snug">{card.title}</h3>
+                      <p className="text-sm leading-7 text-slate-600">{card.body}</p>
+                    </div>
                   </div>
-
-                  <h3 className="text-lg font-bold text-deep mb-3 leading-snug">{card.title}</h3>
-                  <p className="text-sm leading-7 text-slate-600">{card.body}</p>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="h-0.5 bg-gradient-to-r from-deep/50 to-brand/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Business Section
+          Business Section — cards with full-bleed top photos
       ══════════════════════════════════════════════ */}
       <section id="business" className="bg-slate-50/80 px-6 py-28">
         <div className="mx-auto max-w-7xl">
 
-          {/* Header — reveal */}
+          {/* Header */}
           <div className="reveal max-w-3xl">
             <span className="tag mb-4">{t.business.tag}</span>
             <h2 className="section-title mb-6">{t.business.title}</h2>
@@ -317,36 +291,31 @@ function HomePage() {
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {t.business.pillars.map((pillar, i) => {
               const Icon = businessIcons[i];
-              const grad = businessGradients[i];
               const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
               return (
                 <div
                   key={pillar.title}
-                  className={`group/card reveal ${delayClass} bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(45,80,22,0.18)]`}
+                  className={`group reveal ${delayClass} rounded-3xl overflow-hidden bg-white shadow-xl border border-slate-100/80 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500`}
                 >
-                  {/* Gradient header band */}
-                  <div className={`bg-gradient-to-br ${grad} px-6 py-10 flex flex-col items-center text-center relative overflow-hidden`}>
-                    {/* Shine sweep */}
-                    <div className="shine-sweep" />
-                    {/* Grid pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                      <svg width="100%" height="100%">
-                        <defs>
-                          <pattern id={`grid-${i}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <path d="M20 0 L0 0 0 20" fill="none" stroke="white" strokeWidth="0.5" />
-                          </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill={`url(#grid-${i})`} />
-                      </svg>
+                  {/* Full-bleed top photo */}
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={BUSINESS_PHOTOS[i]}
+                      alt={pillar.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Dark gradient over photo for icon legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    {/* Icon badge */}
+                    <div className="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                      <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-3 mx-auto shadow-lg group-hover/card:scale-[1.02] transition-transform duration-500">
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
-                      <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/60">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
+                    {/* Number label */}
+                    <span className="absolute bottom-4 right-4 text-xs font-bold uppercase tracking-[0.15em] text-white/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
 
                   {/* Card body */}
@@ -361,11 +330,6 @@ function HomePage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
-
-                  {/* Card number watermark */}
-                  <div className="absolute bottom-4 right-5 text-[6rem] font-serif font-bold text-white/20 leading-none select-none pointer-events-none">
-                    {String(i + 1).padStart(2, "0")}
                   </div>
                 </div>
               );
@@ -382,7 +346,7 @@ function HomePage() {
       <section id="sustainability" className="mx-auto max-w-7xl px-6 py-28">
         <div className="grid gap-16 lg:grid-cols-2">
 
-          {/* Left column — reveal */}
+          {/* Left column */}
           <div className="reveal">
             <span className="tag mb-4">{t.sustainability.tag}</span>
             <h2 className="section-title mb-6">{t.sustainability.title}</h2>
@@ -405,7 +369,7 @@ function HomePage() {
             </div>
           </div>
 
-          {/* Right column: horizontal icon cards */}
+          {/* Right column: icon cards */}
           <div className="space-y-4">
             {t.sustainability.items.map((item, i) => {
               const Icon = sustainabilityIcons[i];
@@ -428,7 +392,7 @@ function HomePage() {
           </div>
         </div>
 
-        {/* KPI Metrics */}
+        {/* KPI Metrics — dramatic row */}
         <div className="mt-24">
           <div className="reveal flex items-center gap-4 justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-slate-200" />
@@ -443,16 +407,26 @@ function HomePage() {
               return (
                 <div
                   key={kpi.label}
-                  className={`reveal ${delayClass} gradient-border-card rounded-2xl bg-white p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group`}
+                  className={`reveal ${delayClass} gradient-border-card rounded-2xl bg-white p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden`}
                 >
-                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-5">
+                  {/* Faint photo background */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <Image
+                      src={KPI_BG_PHOTO}
+                      alt=""
+                      fill
+                      sizes="25vw"
+                      className="object-cover opacity-5"
+                    />
+                  </div>
+                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-5 relative z-10">
                     {kpi.label}
                   </p>
-                  <div className="flex items-baseline justify-center gap-1.5 mb-1">
+                  <div className="flex items-baseline justify-center gap-1.5 mb-1 relative z-10">
                     <span className="text-6xl font-bold font-serif stat-number gradient-text">{kpi.value}</span>
                     <span className="text-sm font-semibold text-brand">{kpi.unit}</span>
                   </div>
-                  <p className="mt-3 text-xs text-slate-400">{kpi.note}</p>
+                  <p className="mt-3 text-xs text-slate-400 relative z-10">{kpi.note}</p>
                 </div>
               );
             })}
@@ -463,7 +437,7 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Collaboration Section
+          Collaboration Section — photo + glass overlay
       ══════════════════════════════════════════════ */}
       <section id="collaboration" className="bg-slate-50/80 px-6 py-28">
         <div className="mx-auto max-w-7xl">
@@ -476,49 +450,32 @@ function HomePage() {
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {t.collaboration.items.map((item, i) => {
               const Icon = collaborationIcons[i];
-              const grad = collaborationGradients[i];
               const delayClass = (["reveal-delay-1", "reveal-delay-2"] as const)[i];
               return (
                 <div
                   key={item.title}
-                  className={`group reveal ${delayClass} relative bg-gradient-to-br ${grad} rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}
+                  className={`group relative reveal ${delayClass} rounded-3xl overflow-hidden shadow-2xl min-h-[400px]`}
                 >
-                  {/* Shine sweep */}
-                  <div className="shine-sweep" />
+                  {/* Background photo */}
+                  <Image
+                    src={COLLAB_PHOTOS[i]}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                  {/* Decorative top-right arc */}
-                  <svg
-                    className="absolute top-0 right-0 opacity-[0.08] pointer-events-none"
-                    width="120" height="120" viewBox="0 0 120 120"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="120" cy="0" r="80" fill="none" stroke="white" strokeWidth="1.5" />
-                    <circle cx="120" cy="0" r="50" fill="none" stroke="white" strokeWidth="1" />
-                  </svg>
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
-                  {/* Dot background */}
-                  <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-                    <svg width="100%" height="100%">
-                      <defs>
-                        <pattern id={`collab-dots-${i}`} x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                          <circle cx="2" cy="2" r="1.5" fill="white" />
-                        </pattern>
-                      </defs>
-                      <rect width="100%" height="100%" fill={`url(#collab-dots-${i})`} />
-                    </svg>
-                  </div>
-
-                  {/* Large decorative number */}
-                  <div className="absolute bottom-4 right-6 text-[8rem] font-serif font-bold text-white/5 leading-none select-none">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-
-                  <div className="relative z-10 p-10 flex flex-col items-center text-center min-h-[300px] justify-center">
-                    <div className="w-20 h-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 px-8 text-center z-10">
+                    {/* Glass icon box */}
+                    <div className="w-20 h-20 rounded-2xl bg-white/25 border border-white/30 backdrop-blur-sm flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500">
                       <Icon className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-4 leading-snug">{item.title}</h3>
-                    <p className="text-sm leading-7 text-white/75 max-w-xs">{item.body}</p>
+                    <p className="text-sm leading-7 text-white/80 max-w-xs">{item.body}</p>
                   </div>
                 </div>
               );
@@ -534,7 +491,7 @@ function HomePage() {
       ══════════════════════════════════════════════ */}
       <section id="company" className="mx-auto max-w-7xl px-6 py-28">
 
-        {/* Header — reveal */}
+        {/* Header */}
         <div className="reveal max-w-3xl">
           <span className="tag mb-4">{t.company.tag}</span>
           <h2 className="section-title mb-6">{t.company.title}</h2>
@@ -609,9 +566,8 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Stylized map placeholder: dot-grid with pin */}
+            {/* Stylized map placeholder */}
             <div className="mt-8 rounded-xl bg-white border border-deep/10 overflow-hidden shadow-inner h-36 relative flex items-center justify-center">
-              {/* Dot grid background */}
               <svg
                 className="absolute inset-0 w-full h-full opacity-[0.12]"
                 xmlns="http://www.w3.org/2000/svg"
@@ -623,7 +579,6 @@ function HomePage() {
                 </defs>
                 <rect width="100%" height="100%" fill="url(#map-dots)" />
               </svg>
-              {/* Centered pin + label */}
               <div className="relative z-10 flex flex-col items-center gap-1">
                 <div className="w-10 h-10 rounded-full bg-deep/10 border-2 border-deep/20 flex items-center justify-center shadow-md">
                   <MapPin className="w-5 h-5 text-deep" />
@@ -638,7 +593,7 @@ function HomePage() {
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
-          Contact Section
+          Contact Section — dark with logo mark
       ══════════════════════════════════════════════ */}
       <section
         id="contact"
@@ -656,11 +611,14 @@ function HomePage() {
         />
 
         <div className="relative z-10 mx-auto max-w-5xl">
-          {/* Section header */}
+          {/* Section header with logo mark */}
           <div className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm mb-6">
-              {t.contact.badge}
-            </span>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <img src="/logo-mark.svg" alt="アグリ・ジパング" className="w-10 h-10 brightness-200" />
+              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
+                {t.contact.badge}
+              </span>
+            </div>
             <h2 className="font-serif text-4xl font-black tracking-tight text-white md:text-5xl mb-6">
               {t.contact.title}
             </h2>
@@ -704,7 +662,6 @@ function HomePage() {
                   })}
                 </div>
 
-                {/* Separator note */}
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <p className="text-xs text-white/40 leading-6">
                     導入相談・共同実証・提携のご相談など、
@@ -731,16 +688,23 @@ function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════════
-          Footer
+          Footer — logo mark + wordmark
       ══════════════════════════════════════════════ */}
       <footer className="bg-[#0f1f07] border-t-2 border-t-deep/20 py-14 px-6 text-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-3 mb-10">
             <div>
-              <h3 className="text-xl font-serif font-bold mb-4 flex items-center gap-2">
-                <Sprout className="w-5 h-5 text-brand-200" />
-                アグリ・ジパング
-              </h3>
+              <div className="flex items-center gap-2.5 mb-4">
+                <img src="/logo-mark.svg" alt="アグリ・ジパング" className="w-9 h-9" />
+                <div className="flex flex-col leading-tight">
+                  <span className="font-serif text-base font-bold text-white leading-tight">
+                    アグリ・ジパング
+                  </span>
+                  <span className="text-[9px] font-medium tracking-[0.18em] uppercase text-white/40">
+                    AGRI ZIPANG
+                  </span>
+                </div>
+              </div>
               <p className="text-sm text-white/60 leading-7 whitespace-pre-line">
                 {t.footer.tagline}
               </p>
