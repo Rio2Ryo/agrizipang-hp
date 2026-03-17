@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     images: [
       {
-        url: "https://agrizipang-hp.vercel.app/og-image.png",
+        url: "https://agrizipang-hp.vercel.app/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "アグリ・ジパング"
@@ -56,7 +56,9 @@ export const metadata: Metadata = {
       "栃木県宇都宮市を拠点に、営農型太陽光発電とCO2削減ソリューションで自治体・企業の脱炭素を支援します。"
   },
   icons: {
-    icon: "/favicon.ico"
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" }
+    ]
   },
   robots: {
     index: true,
@@ -72,6 +74,28 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSans.variable} ${notoSerif.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "農事組合法人アグリ・ジパング",
+              "alternateName": "Agri Zipang",
+              "url": "https://agrizipang-hp.vercel.app",
+              "logo": "https://agrizipang-hp.vercel.app/images/logo.png",
+              "description": "栃木県を拠点に営農型太陽光発電とCO2削減ソリューションを提供する農事組合法人",
+              "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "栃木県",
+                "addressCountry": "JP"
+              },
+              "email": "contact@agrizipang.jp",
+              "foundingDate": "2019",
+              "areaServed": "栃木県"
+            })
+          }}
+        />
         {children}
       </body>
     </html>

@@ -82,7 +82,7 @@ export const translations = {
         "初版では複雑な可視化よりも、自治体・企業が理解しやすい基本指標を明確に提示することを重視しています。",
       kpiLabel: "初期 KPI 例",
       kpiItems: [
-        "CO2 削減量：XXX トン/年",
+        "CO2 削減量：実証データ集計中",
         "対象領域：森林 / 海藻 / 飼料",
         "対象地域：栃木県内",
       ],
@@ -102,8 +102,8 @@ export const translations = {
       ],
       metricsHeading: "実績・指標",
       kpiMetrics: [
-        { label: "CO2 削減量", value: "—", unit: "トン/年", note: "実証案件実績（公開準備中）" },
-        { label: "発電規模", value: "—", unit: "kW", note: "営農型太陽光（準備中）" },
+        { label: "CO2 削減量", value: "実証中", unit: "", note: "パイロット案件の実績を準備中" },
+        { label: "発電規模", value: "計画中", unit: "", note: "営農型太陽光の導入を推進中" },
         { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
         { label: "設立", value: "2019", unit: "年", note: "農事組合法人として設立" },
       ],
@@ -258,7 +258,7 @@ export const translations = {
         "Rather than complex visualizations, we prioritize clearly presenting foundational metrics that governments and enterprises can easily understand.",
       kpiLabel: "Initial KPI Example",
       kpiItems: [
-        "CO2 reduction: XXX t/year",
+        "CO2 reduction: pilot data in progress",
         "Target domains: forest / seaweed / feed",
         "Target area: Tochigi Prefecture",
       ],
@@ -278,8 +278,8 @@ export const translations = {
       ],
       metricsHeading: "Metrics & Results",
       kpiMetrics: [
-        { label: "CO2 Reduction", value: "—", unit: "t/year", note: "Pilot results (pending release)" },
-        { label: "Generation Scale", value: "—", unit: "kW", note: "Agri-solar (in preparation)" },
+        { label: "CO2 Reduction", value: "Piloting", unit: "", note: "Results from pilot projects in preparation" },
+        { label: "Generation Scale", value: "Planning", unit: "", note: "Advancing agri-solar deployment" },
         { label: "Service Area", value: "Tochigi", unit: "Pref.", note: "As of 2026" },
         { label: "Founded", value: "2019", unit: "year", note: "As Agricultural Corp." },
       ],

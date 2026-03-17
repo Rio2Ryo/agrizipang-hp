@@ -107,8 +107,10 @@ export default function NavBar() {
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t border-deep/10 px-6 py-4 shadow-soft">
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+      }`}>
+        <div className="bg-white border-t border-deep/10 px-6 py-4 shadow-soft">
           {navLinks.map((item) => (
             <a
               key={item.href}
@@ -140,7 +142,7 @@ export default function NavBar() {
             {t.nav.cta}
           </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
