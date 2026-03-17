@@ -1,4 +1,5 @@
 import NavBar from "./components/NavBar";
+import ContactForm from "./components/ContactForm";
 
 const trustMetrics = [
   { label: "支援対象", value: "自治体・企業" },
@@ -435,30 +436,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <form className="card space-y-5">
-            <div>
-              <label htmlFor="org" className="text-sm font-semibold text-deep">団体・企業名</label>
-              <input id="org" className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="例）〇〇市役所 / 〇〇株式会社" />
-            </div>
-            <div>
-              <label htmlFor="name" className="text-sm font-semibold text-deep">ご担当者名</label>
-              <input id="name" className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="例）山田 太郎" />
-            </div>
-            <div>
-              <label htmlFor="email" className="text-sm font-semibold text-deep">メールアドレス</label>
-              <input id="email" type="email" className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="example@company.jp" />
-            </div>
-            <div>
-              <label htmlFor="message" className="text-sm font-semibold text-deep">ご相談内容</label>
-              <textarea id="message" rows={5} className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="対象地域、検討中テーマ、想定している連携内容などをご記入ください。" />
-            </div>
-            <button type="button" className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90">
-              相談内容を送信する
-            </button>
-            <p className="text-xs text-slate-400">
-              ※ 送信機能は現在準備中です。お急ぎの場合は対応時間内にお問い合わせください。
-            </p>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
