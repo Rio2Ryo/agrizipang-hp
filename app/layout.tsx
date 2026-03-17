@@ -83,7 +83,7 @@ export default function RootLayout({
               "name": "農事組合法人アグリ・ジパング",
               "alternateName": "Agri Zipang",
               "url": "https://agrizipang-hp.vercel.app",
-              "logo": "https://agrizipang-hp.vercel.app/images/logo.png",
+              "logo": "https://agrizipang-hp.vercel.app/images/logo-new.jpg",
               "description": "栃木県を拠点に営農型太陽光発電とCO2削減ソリューションを提供する農事組合法人",
               "address": {
                 "@type": "PostalAddress",

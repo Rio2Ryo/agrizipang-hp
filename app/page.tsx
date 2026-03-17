@@ -614,7 +614,7 @@ function HomePage() {
           {/* Section header with logo mark */}
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <Image src="/images/logo.png" alt="アグリ・ジパング" width={120} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/images/logo-new.jpg" alt="アグリ・ジパング" width={120} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 backdrop-blur-sm">
                 {t.contact.badge}
               </span>
@@ -696,7 +696,7 @@ function HomePage() {
             <div>
               <div className="mb-4">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo-new.jpg"
                   alt="アグリ・ジパング"
                   width={120}
                   height={40}

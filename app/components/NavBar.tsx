@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
 const navLinks = [
@@ -33,9 +34,11 @@ export default function NavBar() {
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center gap-2 flex-shrink-0">
             {/* Generated logo */}
-            <img
-              src="/images/logo.png"
+            <Image
+              src="/images/logo-new.jpg"
               alt="アグリ・ジパング"
+              width={120}
+              height={40}
               className={`h-9 w-auto transition-all object-contain ${scrolled ? "" : "brightness-0 invert"}`}
             />
           </a>
