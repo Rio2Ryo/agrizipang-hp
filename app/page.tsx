@@ -1,3 +1,5 @@
+import NavBar from "./components/NavBar";
+
 const trustMetrics = [
   { label: "支援対象", value: "自治体・企業" },
   { label: "主軸", value: "営農型太陽光 / CO2 削減" },
@@ -58,7 +60,7 @@ const collaborationItems = [
   },
   {
     title: "共同検証パートナーとの推進",
-    body: "MVT は共同検証パートナーの一つとして参画し、連携プロジェクトとして実証の精度を高めます。",
+    body: "外部の研究・検証パートナーと連携し、実証の精度と再現性を高めながら事業化を進めます。",
     icon: "🔬",
     image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80"
   }
@@ -86,27 +88,26 @@ const aboutCards = [
 ];
 
 const kpiMetrics = [
-  { label: "CO2 削減量", value: "準備中", unit: "トン/年", note: "実証案件実績（公開予定）" },
-  { label: "発電規模", value: "準備中", unit: "kW", note: "営農型太陽光" },
+  { label: "CO2 削減量", value: "—", unit: "トン/年", note: "実証案件実績（公開準備中）" },
+  { label: "発電規模", value: "—", unit: "kW", note: "営農型太陽光（準備中）" },
   { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
-  { label: "設立", value: "2019", unit: "年", note: "農事組合法人" }
+  { label: "設立", value: "2019", unit: "年", note: "農事組合法人として設立" }
 ];
-
-import NavBar from "./components/NavBar";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <NavBar />
-      {/* Hero Section - 背景画像：太陽光×農地 */}
+
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-deep/95 via-deep/85 to-brand/80" />
-        <div 
+        <div
           className="absolute inset-0 opacity-25"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundSize: "cover",
+            backgroundPosition: "center"
           }}
           aria-hidden="true"
         />
@@ -152,19 +153,19 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-deep">地域と事業をつなぐ、一気通貫の実行力</h2>
               <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-brand font-bold">✓</span>
+                  <span className="font-bold text-brand">✓</span>
                   <span>農地・再エネ・脱炭素を一つの事業として設計</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand font-bold">✓</span>
+                  <span className="font-bold text-brand">✓</span>
                   <span>自治体計画・企業 ESG ニーズの双方に対応</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand font-bold">✓</span>
+                  <span className="font-bold text-brand">✓</span>
                   <span>構想整理から実証・運用まで伴走型で支援</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand font-bold">✓</span>
+                  <span className="font-bold text-brand">✓</span>
                   <span>栃木県を起点とした地域密着の実行体制</span>
                 </li>
               </ul>
@@ -187,16 +188,16 @@ export default function Home() {
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {aboutCards.map((card) => (
-            <div key={card.title} className="card overflow-hidden">
+            <div key={card.title} className="card !p-0 overflow-hidden">
               <div className="h-40 w-full overflow-hidden">
-                <img 
-                  src={card.image} 
+                <img
+                  src={card.image}
                   alt={card.title}
                   className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                   loading="lazy"
                 />
               </div>
-              <div className="p-5">
+              <div className="p-6">
                 <div className="mb-3 text-3xl">{card.icon}</div>
                 <h3 className="text-lg font-bold text-deep">{card.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{card.body}</p>
@@ -215,21 +216,22 @@ export default function Home() {
             <span className="tag mb-4">Business</span>
             <h2 className="font-serif text-3xl font-bold text-deep md:text-5xl">主軸を明確にした、事業ポートフォリオ。</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              何でもやる印象ではなく、強みの核を明確に伝えるために、主軸と補完領域を整理した構成にしています。
+              アグリ・ジパングは、営農型太陽光発電と CO2 削減提案を中核に据え、
+              農業・資材・バイオマス支援を補完領域として組み合わせた事業体制を整えています。
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {businessPillars.map((item) => (
-              <div key={item.title} className="card flex h-full flex-col overflow-hidden">
+              <div key={item.title} className="card !p-0 flex h-full flex-col overflow-hidden">
                 <div className="h-48 w-full overflow-hidden">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.title}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
-                <div className="flex-1 p-5">
+                <div className="flex flex-1 flex-col p-6">
                   <div className="mb-3 text-3xl">{item.icon}</div>
                   <h3 className="text-xl font-bold text-deep">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{item.body}</p>
@@ -247,17 +249,18 @@ export default function Home() {
 
       <div className="section-divider" />
 
-      {/* Sustainability / KPI Section */}
+      {/* Sustainability Section */}
       <section id="sustainability" className="mx-auto max-w-6xl px-6 py-24">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <span className="tag mb-4">Sustainability</span>
             <h2 className="font-serif text-3xl font-bold text-deep md:text-5xl">持続可能性を、説明可能な価値へ。</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              初版では複雑な可視化よりも、自治体・企業が理解しやすい基本指標を明確に提示することを重視しています。
+              自治体・企業が判断しやすいよう、CO2 削減の仕組み・対象・実績を
+              明確な指標として整理し、説明責任を果たせる形で提示します。
             </p>
             <div className="mt-8 rounded-[2rem] border border-brand/20 bg-brand/10 p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">Initial KPI Example</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">取り組み指標（2026年現在）</p>
               <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
                 <li>・CO2 削減量：公開準備中（実証案件にて計測中）</li>
                 <li>・対象領域：森林 / 海藻 / 飼料</li>
@@ -267,16 +270,16 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
             {sustainabilityItems.map((item) => (
-              <div key={item.title} className="card overflow-hidden">
+              <div key={item.title} className="card !p-0 overflow-hidden">
                 <div className="h-32 w-full overflow-hidden">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.title}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
-                <div className="flex items-start gap-4 p-4">
+                <div className="flex items-start gap-4 p-6">
                   <span className="text-3xl">{item.icon}</span>
                   <div>
                     <h3 className="text-xl font-bold text-deep">{item.title}</h3>
@@ -290,7 +293,7 @@ export default function Home() {
 
         {/* KPI メトリクスカード */}
         <div className="mt-16">
-          <h3 className="text-center text-2xl font-bold text-deep mb-8">実績・指標</h3>
+          <h3 className="mb-8 text-center text-2xl font-bold text-deep">実績・指標</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {kpiMetrics.map((kpi) => (
               <div key={kpi.label} className="rounded-3xl border border-deep/15 bg-white p-6 text-center shadow-soft">
@@ -321,16 +324,16 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {collaborationItems.map((item) => (
-              <div key={item.title} className="card overflow-hidden">
+              <div key={item.title} className="card !p-0 overflow-hidden">
                 <div className="h-40 w-full overflow-hidden">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.title}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
-                <div className="flex items-start gap-4 p-4">
+                <div className="flex items-start gap-4 p-6">
                   <span className="text-3xl">{item.icon}</span>
                   <div>
                     <h3 className="text-xl font-bold text-deep">{item.title}</h3>
@@ -341,9 +344,10 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 rounded-[2rem] border border-deep/10 bg-white p-8 shadow-soft">
+            <p className="mb-2 font-semibold text-deep">連携体制について</p>
             <p className="text-sm leading-7 text-slate-600">
-              MVT については前面に出しすぎず、共同検証の一部として自然に位置づけています。
-              今後、実績・導入事例・協業体制の開示に応じて、より具体的な連携紹介へ拡張できます。
+              現在、複数の自治体・企業・研究機関との連携検討を進めています。
+              共同実証・提携に関心のある団体・企業の方は、お気軽にお問い合わせください。
             </p>
           </div>
         </div>
@@ -351,7 +355,7 @@ export default function Home() {
 
       <div className="section-divider" />
 
-      {/* Company Section - 会社概要 */}
+      {/* Company Section */}
       <section id="company" className="mx-auto max-w-6xl px-6 py-24">
         <div className="max-w-3xl">
           <span className="tag mb-4">Company</span>
@@ -362,23 +366,23 @@ export default function Home() {
         </div>
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <div className="card">
-            <div className="grid grid-cols-[120px_1fr] gap-4 text-sm">
-              <span className="font-semibold text-deep">会社名</span>
+            <div className="grid grid-cols-[120px_1fr] gap-x-4 gap-y-4 text-sm">
+              <span className="font-semibold text-deep">法人名</span>
               <span className="text-slate-600">農事組合法人アグリ・ジパング</span>
               <span className="font-semibold text-deep">所在地</span>
-              <span className="text-slate-600">栃木県</span>
+              <span className="text-slate-600">栃木県宇都宮市</span>
               <span className="font-semibold text-deep">設立</span>
-              <span className="text-slate-600">2019 年（農事組合法人）</span>
+              <span className="text-slate-600">2019年</span>
               <span className="font-semibold text-deep">事業内容</span>
               <span className="text-slate-600">営農型太陽光発電事業、CO2 削減ソリューション、農業支援</span>
-              <span className="font-semibold text-deep">連絡先</span>
-              <span className="text-slate-600">contact@agrizipang.jp</span>
+              <span className="font-semibold text-deep">お問い合わせ</span>
+              <span className="text-slate-600">下記フォームよりご連絡ください</span>
             </div>
           </div>
-          {/* 地図 - Google Maps 埋め込み */}
-          <div className="rounded-[2rem] border border-deep/10 overflow-hidden shadow-soft">
+          {/* 地図 - 宇都宮市 */}
+          <div className="overflow-hidden rounded-[2rem] border border-deep/10 shadow-soft">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205978.7461937875!2d139.6386866!3d36.6839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601d64c8c2f5b1b7%3A0x1e3f8e0c0c0c0c0c!2z5rGf6LC35Yy6!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51975.1082085697!2d139.83504!3d36.5658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601f6765a826e4d3%3A0xe84da3fa6d5ceb4a!2z5a6H5biC!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
               width="100%"
               height="320"
               style={{ border: 0 }}
@@ -386,7 +390,7 @@ export default function Home() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
-              title="栃木県地図"
+              title="栃木県宇都宮市の地図"
             />
           </div>
         </div>
@@ -400,7 +404,8 @@ export default function Home() {
           <span className="tag mb-4">Contact</span>
           <h2 className="font-serif text-3xl font-bold text-deep md:text-5xl">導入相談・提携相談はこちらから。</h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-            事業開発、地域脱炭素、共同実証など、検討初期でも構いません。対象地域や課題感が固まりきっていない段階でもご相談いただけます。
+            事業開発、地域脱炭素、共同実証など、検討初期でも構いません。
+            対象地域や課題感が固まりきっていない段階でもご相談いただけます。
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -408,10 +413,10 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-deep">お問い合わせ先</h3>
             <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
               <div className="flex items-start gap-3">
-                <span className="text-xl">📧</span>
+                <span className="text-xl">📍</span>
                 <div>
-                  <p className="font-semibold text-deep">メール</p>
-                  <a href="mailto:contact@agrizipang.jp" className="text-brand hover:underline">contact@agrizipang.jp</a>
+                  <p className="font-semibold text-deep">所在地</p>
+                  <p>栃木県宇都宮市</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -432,8 +437,8 @@ export default function Home() {
           </div>
           <form className="card space-y-5">
             <div>
-              <label htmlFor="company" className="text-sm font-semibold text-deep">団体・企業名</label>
-              <input id="company" className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="例）〇〇市役所 / 〇〇株式会社" />
+              <label htmlFor="org" className="text-sm font-semibold text-deep">団体・企業名</label>
+              <input id="org" className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="例）〇〇市役所 / 〇〇株式会社" />
             </div>
             <div>
               <label htmlFor="name" className="text-sm font-semibold text-deep">ご担当者名</label>
@@ -447,45 +452,48 @@ export default function Home() {
               <label htmlFor="message" className="text-sm font-semibold text-deep">ご相談内容</label>
               <textarea id="message" rows={5} className="mt-2 w-full rounded-2xl border border-deep/15 px-4 py-3 text-sm outline-none transition focus:border-brand" placeholder="対象地域、検討中テーマ、想定している連携内容などをご記入ください。" />
             </div>
-            <button type="button" className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90">相談内容を送信する</button>
-            <p className="text-xs text-slate-500">※ フォーム送信はデモ表示です。正式なお問い合わせはメールでご連絡ください。</p>
+            <button type="button" className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90">
+              相談内容を送信する
+            </button>
+            <p className="text-xs text-slate-400">
+              ※ 送信機能は現在準備中です。お急ぎの場合は対応時間内にお問い合わせください。
+            </p>
           </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-deep py-12 px-6 text-white">
+      <footer className="bg-deep px-6 py-12 text-white">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <h3 className="text-xl font-serif font-bold mb-4">アグリ・ジパング</h3>
-              <p className="text-sm text-white/80 leading-relaxed">
+              <h3 className="mb-4 font-serif text-xl font-bold">アグリ・ジパング</h3>
+              <p className="text-sm leading-relaxed text-white/80">
                 地域課題を、事業として前に進める。<br />
                 自治体と企業の連携を軸に、持続可能な地域共創を支援します。
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">メニュー</h4>
+              <h4 className="mb-4 font-semibold">メニュー</h4>
               <ul className="space-y-2 text-sm text-white/80">
-                <li><a href="#about" className="hover:text-white transition">About</a></li>
-                <li><a href="#business" className="hover:text-white transition">Business</a></li>
-                <li><a href="#sustainability" className="hover:text-white transition">Sustainability</a></li>
-                <li><a href="#collaboration" className="hover:text-white transition">Collaboration</a></li>
-                <li><a href="#company" className="hover:text-white transition">Company</a></li>
-                <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
+                <li><a href="#about" className="transition hover:text-white">About</a></li>
+                <li><a href="#business" className="transition hover:text-white">Business</a></li>
+                <li><a href="#sustainability" className="transition hover:text-white">Sustainability</a></li>
+                <li><a href="#collaboration" className="transition hover:text-white">Collaboration</a></li>
+                <li><a href="#company" className="transition hover:text-white">Company</a></li>
+                <li><a href="#contact" className="transition hover:text-white">Contact</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">連絡先</h4>
+              <h4 className="mb-4 font-semibold">所在地・対応時間</h4>
               <ul className="space-y-2 text-sm text-white/80">
-                <li>📧 contact@agrizipang.jp</li>
-                <li>📍 栃木県</li>
+                <li>📍 栃木県宇都宮市</li>
                 <li>🕐 平日 9:00 - 18:00</li>
               </ul>
             </div>
           </div>
           <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/60">
-            <p>&copy; 2026 Agri Zipang. All rights reserved.</p>
+            <p>&copy; 2026 農事組合法人アグリ・ジパング. All rights reserved.</p>
           </div>
         </div>
       </footer>
