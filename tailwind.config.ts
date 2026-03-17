@@ -6,7 +6,10 @@ const config: Config = {
     extend: {
       colors: {
         deep: "#2D5016",
-        brand: "#4A90E2"
+        brand: {
+          DEFAULT: "#4A90E2",
+          200: "#a8c8f5"
+        }
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

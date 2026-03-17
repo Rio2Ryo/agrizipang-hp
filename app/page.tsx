@@ -66,35 +66,38 @@ const collaborationItems = [
 
 const aboutCards = [
   {
-    title: "信頼性のある情報設計",
-    body: "自治体や企業が判断しやすいよう、事業の目的・スキーム・成果指標を明確に整理します。",
-    icon: "📋",
+    title: "自治体・企業への実行支援",
+    body: "計画立案から現場実装まで、行政と企業の双方に向けた実行可能な提案と伴走型サポートを行います。",
+    icon: "🤝",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80"
   },
   {
-    title: "主軸を明確にした事業構成",
-    body: "営農型太陽光発電と CO2 削減提案を中核に据え、周辺事業を補完的に位置づけます。",
-    icon: "🎯",
+    title: "農地と再エネの両立設計",
+    body: "営農型太陽光を主軸に、農業機能を守りながら地域の脱炭素化を推進。農地活用と事業性を両立します。",
+    icon: "☀️",
     image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&q=80"
   },
   {
-    title: "問い合わせ導線を最適化",
-    body: "Hero、各セクション、最終セクションの複数導線で、相談につながる導線設計を行います。",
-    icon: "📬",
+    title: "CO2 削減の可視化と信頼性",
+    body: "削減量・根拠・指標を整理し、行政の計画策定・企業の ESG 開示に耐える水準で数値を提示します。",
+    icon: "📊",
     image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=400&q=80"
   }
 ];
 
 const kpiMetrics = [
-  { label: "CO2 削減量", value: "XXX", unit: "トン/年", note: "実証案件 A 実績" },
-  { label: "発電規模", value: "XXX", unit: "kW", note: "営農型太陽光" },
+  { label: "CO2 削減量", value: "—", unit: "トン/年", note: "実証案件実績（公開準備中）" },
+  { label: "発電規模", value: "—", unit: "kW", note: "営農型太陽光" },
   { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
-  { label: "設立", value: "20XX", unit: "年", note: "会社設立" }
+  { label: "設立", value: "2019", unit: "年", note: "農事組合法人として設立" }
 ];
+
+import NavBar from "./components/NavBar";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <NavBar />
       {/* Hero Section - 背景画像：太陽光×農地 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-deep/95 via-deep/85 to-brand/80" />
@@ -140,29 +143,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero 右側：プロジェクト焦点カード */}
+            {/* Hero 右側：提供価値カード */}
             <div className="rounded-[2rem] border border-white/30 bg-white/95 p-8 shadow-2xl backdrop-blur">
               <div className="mb-6 flex items-center gap-3">
-                <span className="text-3xl">🎯</span>
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand">Project Focus</p>
+                <span className="text-3xl">🌱</span>
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand">Why Agri Zipang</p>
               </div>
-              <h2 className="text-2xl font-bold text-deep">信用されるコーポレート LP を前提に設計</h2>
+              <h2 className="text-2xl font-bold text-deep">地域と事業をつなぐ、一気通貫の実行力</h2>
               <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-brand">•</span>
-                  <span>主軸は「営農型太陽光発電 / CO2 削減提案」</span>
+                  <span className="text-brand font-bold">✓</span>
+                  <span>農地・再エネ・脱炭素を一つの事業として設計</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand">•</span>
-                  <span>副次領域として農業・資材・バイオマスを整理</span>
+                  <span className="text-brand font-bold">✓</span>
+                  <span>自治体計画・企業 ESG ニーズの双方に対応</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand">•</span>
-                  <span>数値実績や地域性を後から拡張しやすい構成</span>
+                  <span className="text-brand font-bold">✓</span>
+                  <span>構想整理から実証・運用まで伴走型で支援</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand">•</span>
-                  <span>問い合わせ導線を全体に配置し、商談化を意識</span>
+                  <span className="text-brand font-bold">✓</span>
+                  <span>栃木県を起点とした地域密着の実行体制</span>
                 </li>
               </ul>
             </div>
@@ -256,7 +259,7 @@ export default function Home() {
             <div className="mt-8 rounded-[2rem] border border-brand/20 bg-brand/10 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">Initial KPI Example</p>
               <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
-                <li>・CO2 削減量：XXX トン/年</li>
+                <li>・CO2 削減量：公開準備中（実証案件にて計測中）</li>
                 <li>・対象領域：森林 / 海藻 / 飼料</li>
                 <li>・対象地域：栃木県内</li>
               </ul>
@@ -361,7 +364,7 @@ export default function Home() {
           <div className="card">
             <div className="grid grid-cols-[120px_1fr] gap-4 text-sm">
               <span className="font-semibold text-deep">会社名</span>
-              <span className="text-slate-600">アグリ・ジパング株式会社</span>
+              <span className="text-slate-600">農事組合法人アグリ・ジパング</span>
               <span className="font-semibold text-deep">所在地</span>
               <span className="text-slate-600">栃木県</span>
               <span className="font-semibold text-deep">設立</span>
