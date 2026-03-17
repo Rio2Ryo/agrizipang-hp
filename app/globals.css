@@ -70,6 +70,10 @@ body {
   @apply inline-flex items-center justify-center rounded-full border-2 border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/20 hover:border-white/50;
 }
 
+.btn-accent {
+  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent to-accent/90 px-8 py-4 font-semibold text-white shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5;
+}
+
 /* Image Hover Effects */
 .image-zoom {
   @apply overflow-hidden rounded-2xl;

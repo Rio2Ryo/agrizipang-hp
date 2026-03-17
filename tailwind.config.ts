@@ -9,6 +9,10 @@ const config: Config = {
         brand: {
           DEFAULT: "#4A90E2",
           200: "#a8c8f5"
+        },
+        accent: {
+          DEFAULT: "#E8861A",
+          light: "#FFF7ED"
         }
       },
       fontFamily: {
