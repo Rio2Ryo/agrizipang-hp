@@ -87,12 +87,20 @@ export default function RootLayout({
               "description": "栃木県を拠点に営農型太陽光発電とCO2削減ソリューションを提供する農事組合法人",
               "address": {
                 "@type": "PostalAddress",
+                "postalCode": "320-0811",
+                "addressLocality": "宇都宮市",
                 "addressRegion": "栃木県",
+                "streetAddress": "大道り4-1-20 けやき通りビル2F",
                 "addressCountry": "JP"
               },
-              "email": "contact@agrizipang.jp",
-              "foundingDate": "2019",
-              "areaServed": "栃木県"
+              "email": "inquiry@agrizipang.com",
+              "telephone": "028-625-2809",
+              "foundingDate": "2015-05-26",
+              "areaServed": "日本",
+              "founder": {
+                "@type": "Person",
+                "name": "林一成"
+              }
             })
           }}
         />

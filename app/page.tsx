@@ -737,7 +737,7 @@ function HomePage() {
                 {t.footer.contactTitle}
               </h4>
               <ul className="space-y-2 text-sm text-white/50">
-                <li>contact@agrizipang.jp</li>
+                <li>inquiry@agrizipang.com</li>
                 <li>栃木県</li>
                 <li>平日 9:00 – 18:00</li>
               </ul>
