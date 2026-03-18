@@ -204,3 +204,77 @@ body {
 .hover-ring:hover {
   animation: ringPulse 0.9s ease-out;
 }
+
+/* ─── Parallax section ────────────────────────────────── */
+.parallax-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+@supports (-webkit-touch-callout: none) {
+  /* iOS doesn't support background-attachment: fixed */
+  .parallax-section {
+    background-attachment: scroll;
+  }
+}
+
+/* ─── Skeleton loading shimmer ────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(45, 80, 22, 0.04) 25%,
+    rgba(45, 80, 22, 0.08) 50%,
+    rgba(45, 80, 22, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+
+/* ─── Hide scrollbar for slider ──────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Quote band typography ──────────────────────────── */
+.quote-band {
+  @apply relative overflow-hidden;
+}
+.quote-band blockquote p {
+  text-wrap: balance;
+}
+
+/* ─── SVG pulse animation ────────────────────────────── */
+@keyframes svgPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%      { opacity: 0.25; transform: scale(1.02); }
+}
+.svg-bg-pulse {
+  animation: svgPulse 4s ease-in-out infinite;
+}
+
+/* ─── Parallax quote slow float ──────────────────────── */
+@keyframes slowDrift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(0.5deg); }
+}
+.animate-slow-drift {
+  animation: slowDrift 8s ease-in-out infinite;
+}
+
+/* ─── Section-specific typography overrides ───────────── */
+.section-title-alt {
+  @apply font-serif text-3xl font-bold tracking-tight text-deep md:text-5xl leading-[1.1];
+}
+
+.section-number {
+  @apply block text-8xl font-black font-serif leading-none text-deep/[0.06];
+}

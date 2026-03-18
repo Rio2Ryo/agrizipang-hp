@@ -175,6 +175,36 @@ export const translations = {
       errNetwork: "ネットワークエラーが発生しました。時間をおいて再度お試しください。",
       errSend: "送信に失敗しました。",
     },
+    quotes: [
+      "農地 × 再エネ × 脱炭素を、\nひとつの事業として設計する。",
+      "地域の資源を、持続可能な価値へ。\n構想から運用まで、伴走する。",
+    ],
+    caseStudies: {
+      tag: "Case Studies",
+      title: "プロジェクト事例",
+      subtitle: "地域課題の解決に向けた取り組みをご紹介します。",
+      items: [
+        {
+          title: "営農型太陽光の導入設計",
+          category: "Solar",
+          body: "栃木県内の農地を対象に、農業機能を維持しながら太陽光発電を導入するための候補地整理・制度対応・合意形成までを支援。",
+        },
+        {
+          title: "自治体向けCO2削減ロードマップ",
+          category: "CO2",
+          body: "地方自治体の脱炭素計画に対し、森林・海藻・飼料を組み合わせた実行可能な削減シナリオと KPI 設計を提供。",
+        },
+        {
+          title: "バイオマス資材の供給体制構築",
+          category: "Biomass",
+          body: "農業廃棄物のバイオマス燃料化に向けた調達ルート整理と、地域内循環型の供給モデルを設計。",
+        },
+      ],
+    },
+    midCta: {
+      label: "Ready to start?",
+      title: "まずは30分の無料相談から。",
+    },
   },
 
   en: {
@@ -350,6 +380,36 @@ export const translations = {
       errRequired: "Name, email, and inquiry details are required.",
       errNetwork: "A network error occurred. Please try again later.",
       errSend: "Failed to send. Please try again.",
+    },
+    quotes: [
+      "Farmland × Renewables × Decarbonization —\ndesigned as one business.",
+      "Turning regional resources into\nsustainable value. From concept to operation.",
+    ],
+    caseStudies: {
+      tag: "Case Studies",
+      title: "Project Highlights",
+      subtitle: "Showcasing our approach to solving regional challenges.",
+      items: [
+        {
+          title: "Agri-Solar Implementation Design",
+          category: "Solar",
+          body: "Supporting site screening, regulatory compliance, and consensus building for agri-solar deployment on farmland in Tochigi Prefecture.",
+        },
+        {
+          title: "Municipal CO2 Reduction Roadmap",
+          category: "CO2",
+          body: "Delivering actionable reduction scenarios combining forest, seaweed, and feed approaches with KPI design for local government decarbonization plans.",
+        },
+        {
+          title: "Biomass Supply Chain Development",
+          category: "Biomass",
+          body: "Designing procurement routes and regional circular supply models for converting agricultural waste into biomass fuel.",
+        },
+      ],
+    },
+    midCta: {
+      label: "Ready to start?",
+      title: "Start with a free 30-minute consultation.",
     },
   },
 } as const;

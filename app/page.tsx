@@ -5,6 +5,9 @@ import Image from "next/image";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import NavBar from "./components/NavBar";
 import ContactForm from "./components/ContactForm";
+import SectionDots from "./components/SectionDots";
+import CaseStudySlider from "./components/CaseStudySlider";
+import LoadingScreen from "./components/LoadingScreen";
 import {
   Sun, Wheat, Leaf, TrendingUp, Home as HomeIcon, Briefcase,
   Users, Microscope, MapPin, RefreshCcw, Building, CheckCircle2, ArrowRight,
@@ -90,6 +93,8 @@ function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <NavBar />
+      <LoadingScreen />
+      <SectionDots />
 
       {/* ══════════════════════════════════════════════
           Hero Section — full-screen photo background
@@ -181,39 +186,6 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Floating "Why Agri Zipang" card — lg+ only, absolute bottom-right */}
-        <div className="hidden lg:block absolute right-8 xl:right-16 bottom-16 w-96 z-20">
-          <div className="group relative bg-white/[0.07] backdrop-blur-2xl rounded-3xl border border-white/[0.14] p-8 shadow-2xl animate-float">
-            <div className="shine-sweep rounded-3xl" />
-
-            <div className="flex items-center gap-3 mb-6 relative z-10">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand/60 flex items-center justify-center shadow-lg shadow-brand/30 flex-shrink-0">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-brand-200">{t.hero.whyTitle}</p>
-                <h2 className="text-xl font-bold text-white">{t.hero.whySubtitle}</h2>
-              </div>
-            </div>
-
-            <ul className="space-y-3 relative z-10">
-              {t.hero.reasons.map((reason, i) => {
-                const Icon = whyIcons[i];
-                return (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.05] border border-white/[0.08] transition-colors duration-200 hover:bg-white/[0.09]"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-brand/20 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-4 h-4 text-brand-200" />
-                    </div>
-                    <span className="text-sm text-white/85 leading-snug mt-0.5">{reason}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
       </section>
 
       <div className="section-divider" />
@@ -273,7 +245,25 @@ function HomePage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      {/* ══════════════════════════════════════════════
+          Quote Band #1
+      ══════════════════════════════════════════════ */}
+      <section className="quote-band bg-deep py-28 px-6 relative">
+        <div className="absolute inset-0 pattern-dots opacity-30 pointer-events-none" />
+        {/* SVG solar panel decoration */}
+        <svg className="absolute right-8 top-8 w-48 h-48 text-white/[0.04] svg-bg-pulse" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="40" height="25" rx="2" />
+          <rect x="55" y="5" width="40" height="25" rx="2" />
+          <rect x="5" y="40" width="40" height="25" rx="2" />
+          <rect x="55" y="40" width="40" height="25" rx="2" />
+          <rect x="45" y="70" width="10" height="25" rx="1" />
+        </svg>
+        <blockquote className="reveal relative z-10 mx-auto max-w-4xl text-center">
+          <p className="font-serif text-3xl md:text-5xl font-bold text-white leading-snug tracking-tight whitespace-pre-line">
+            {t.quotes[0]}
+          </p>
+        </blockquote>
+      </section>
 
       {/* ══════════════════════════════════════════════
           Business Section — cards with full-bleed top photos
@@ -320,7 +310,8 @@ function HomePage() {
 
                   {/* Card body */}
                   <div className="p-6">
-                    <h3 className="text-lg font-bold text-deep mb-3">{pillar.title}</h3>
+                    <span className="section-number">{String(i + 1).padStart(2, "0")}</span>
+                    <h3 className="text-lg font-bold text-deep mb-3 relative -mt-5">{pillar.title}</h3>
                     <p className="text-sm leading-7 text-slate-600 mb-5">{pillar.body}</p>
                     <ul className="space-y-2.5">
                       {pillar.points.map((point) => (
@@ -338,7 +329,41 @@ function HomePage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      {/* ══════════════════════════════════════════════
+          Mid-page CTA Band
+      ══════════════════════════════════════════════ */}
+      <section className="bg-gradient-to-r from-deep to-[#1a3a09] py-20 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 pattern-dots opacity-20 pointer-events-none" />
+        <div className="reveal relative z-10 mx-auto max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-200 mb-4">
+            {t.midCta.label}
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
+            {t.midCta.title}
+          </h2>
+          <a href="#contact" className="group btn-primary hover-ring">
+            <span className="shine-sweep" />
+            {t.nav.cta}
+            <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════
+          Quote Band #2
+      ══════════════════════════════════════════════ */}
+      <section className="quote-band bg-slate-50 py-28 px-6 relative overflow-hidden">
+        {/* SVG leaf decoration */}
+        <svg className="absolute left-8 bottom-8 w-40 h-40 text-deep/[0.04] svg-bg-pulse animate-slow-drift" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 5 C20 20 5 50 15 80 C25 60 40 45 50 35 C60 45 75 60 85 80 C95 50 80 20 50 5Z" />
+          <line x1="50" y1="35" x2="50" y2="95" stroke="currentColor" strokeWidth="3" fill="none" />
+        </svg>
+        <blockquote className="reveal relative z-10 mx-auto max-w-4xl text-center">
+          <p className="font-serif text-3xl md:text-5xl font-bold text-deep leading-snug tracking-tight whitespace-pre-line">
+            {t.quotes[1]}
+          </p>
+        </blockquote>
+      </section>
 
       {/* ══════════════════════════════════════════════
           Sustainability Section
@@ -484,6 +509,13 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════════════
+          Case Studies Section
+      ══════════════════════════════════════════════ */}
+      <section className="mx-auto max-w-7xl px-6 py-28">
+        <CaseStudySlider />
+      </section>
+
       <div className="section-divider" />
 
       {/* ══════════════════════════════════════════════
@@ -566,25 +598,17 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Stylized map placeholder */}
-            <div className="mt-8 rounded-xl bg-white border border-deep/10 overflow-hidden shadow-inner h-36 relative flex items-center justify-center">
-              <svg
-                className="absolute inset-0 w-full h-full opacity-[0.12]"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <pattern id="map-dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="1.2" fill="#2D5016" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#map-dots)" />
-              </svg>
-              <div className="relative z-10 flex flex-col items-center gap-1">
-                <div className="w-10 h-10 rounded-full bg-deep/10 border-2 border-deep/20 flex items-center justify-center shadow-md">
-                  <MapPin className="w-5 h-5 text-deep" />
-                </div>
-                <span className="text-xs font-semibold text-deep/60 tracking-wide">栃木県</span>
-              </div>
+            <div className="mt-8 rounded-xl overflow-hidden shadow-inner h-48 relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d204145.3!2d139.75!3d36.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601f68!2z5qCD5pyo55yM!5e0!3m2!1sja!2sjp"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "grayscale(1) contrast(1.1)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="栃木県の地図"
+              />
             </div>
           </div>
         </div>
