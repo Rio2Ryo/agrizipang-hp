@@ -144,7 +144,7 @@ export const translations = {
       infoItems: [
         { label: "メール", content: "contact@agrizipang.jp", href: "mailto:contact@agrizipang.jp" },
         { label: "対応時間", content: "平日 9:00 - 18:00（JST）", href: null },
-        { label: "主なご相談", content: "導入相談 / 共同実証 / 提携相談 / 資料請求", href: null },
+        { label: "主なご相談", content: "お問い合わせ / 共同実証 / 提携相談 / 資料請求", href: null },
       ],
     },
     footer: {
