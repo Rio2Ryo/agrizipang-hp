@@ -62,9 +62,9 @@ const KPI_BG_PHOTO = "/images/sustainability-analytics.png";
 // ─── Inner page component (uses useLanguage) ──────────────────────────────────
 
 function HomePage() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
-  // Scroll-reveal via IntersectionObserver
+  // Scroll-reveal via IntersectionObserver — re-run on language change
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -77,9 +77,23 @@ function HomePage() {
       },
       { threshold: 0.12 }
     );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach((el) => {
+      // Re-observe elements that haven't been revealed yet, or re-reveal visible ones
+      if (!el.classList.contains("revealed")) {
+        observer.observe(el);
+      }
+    });
+    // Also re-check already-visible elements on lang change
+    if (lang) {
+      document.querySelectorAll(".reveal:not(.revealed)").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("revealed");
+        }
+      });
+    }
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   const navItems = [
     { id: "about", label: t.nav.about },
