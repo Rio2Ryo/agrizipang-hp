@@ -697,9 +697,8 @@ function HomePage() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <p className="text-xs text-white/40 leading-6">
-                    お問い合わせ・共同実証・提携のご相談など、
-                    <br />検討初期段階でもお気軽にお問い合わせください。
+                  <p className="text-xs text-white/40 leading-6 whitespace-pre-line">
+                    {t.contact.subtitle}
                   </p>
                 </div>
               </div>
@@ -709,7 +708,7 @@ function HomePage() {
                 <div className="inline-flex items-center gap-2 rounded-full bg-brand/15 border border-brand/25 px-4 py-2">
                   <Clock className="w-3.5 h-3.5 text-brand-200" />
                   <span className="text-xs font-semibold text-brand-200 tracking-wide">
-                    通常 1〜2 営業日以内にご返信
+                    {t.contact.responseTime || "通常 1〜2 営業日以内にご返信"}
                   </span>
                 </div>
               </div>
@@ -763,9 +762,13 @@ function HomePage() {
                 {t.footer.contactTitle}
               </h4>
               <ul className="space-y-2 text-sm text-white/50">
-                <li>inquiry@agrizipang.com</li>
-                <li>栃木県</li>
-                <li>平日 9:00 – 18:00</li>
+                {t.contact.infoItems.map((item) => (
+                  <li key={item.label}>
+                    {item.href ? (
+                      <a href={item.href} className="hover:text-white transition-colors">{item.content}</a>
+                    ) : item.content}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

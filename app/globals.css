@@ -57,12 +57,12 @@ body {
 
 /* ─── Section heading ─────────────────────────────────── */
 .section-title {
-  @apply font-serif text-4xl font-black tracking-tight text-deep md:text-6xl leading-[1.05];
+  @apply font-serif text-4xl font-black tracking-tight text-deep md:text-6xl leading-[1.05] whitespace-pre-line;
 }
 
 /* ─── Section subtitle ────────────────────────────────── */
 .section-subtitle {
-  @apply text-lg leading-9 text-slate-500 max-w-2xl;
+  @apply text-lg leading-9 text-slate-500 max-w-2xl whitespace-pre-line;
 }
 
 /* ─── Button: primary ─────────────────────────────────── */

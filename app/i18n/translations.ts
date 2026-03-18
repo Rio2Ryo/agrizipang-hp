@@ -33,9 +33,9 @@ export const translations = {
     },
     about: {
       tag: "About",
-      title: "農業を起点に、地域と企業の接続点をつくる。",
+      title: "農業を起点に\n地域と企業の接続点をつくる。",
       subtitle:
-        "地域資源の活用、脱炭素対応、事業性の確保。どれか一つだけでは前に進まないテーマに対して、アグリ・ジパングは複数の関係者をつなぎ、前提整理から実装までを設計します。",
+        "地域資源の活用、脱炭素対応、事業性の確保。どれか一つだけでは前に進まないテーマに対して、アグリ・ジパングは複数の関係者をつなぎ\n前提整理から実装までを設計します。",
       cards: [
         {
           title: "自治体・企業への実行支援",
@@ -53,9 +53,9 @@ export const translations = {
     },
     business: {
       tag: "Business",
-      title: "主軸を明確にした、事業ポートフォリオ。",
+      title: "主軸を明確にした\n事業ポートフォリオ。",
       subtitle:
-        "何でもやる印象ではなく、強みの核を明確に伝えるために、主軸と補完領域を整理した構成にしています。",
+        "何でもやる印象ではなく、強みの核を明確に伝えるために\n主軸と補完領域を整理した構成にしています。",
       pillars: [
         {
           title: "営農型太陽光発電",
@@ -76,7 +76,7 @@ export const translations = {
     },
     sustainability: {
       tag: "Sustainability",
-      title: "持続可能性を、説明可能な価値へ。",
+      title: "持続可能性を\n説明可能な価値へ。",
       subtitle:
         "初版では複雑な可視化よりも、自治体・企業が理解しやすい基本指標を明確に提示することを重視しています。",
       kpiLabel: "初期 KPI 例",
@@ -109,17 +109,17 @@ export const translations = {
     },
     collaboration: {
       tag: "Collaboration",
-      title: "連携プロジェクトとして、実証精度を高める。",
+      title: "連携プロジェクトとして\n実証精度を高める。",
       subtitle:
-        "行政、企業、現場、研究・検証パートナーが分断されたままでは、実装は進みません。アグリ・ジパングは関係者を束ねるハブとして機能します。",
+        "行政、企業、現場、研究・検証パートナーが分断されたままでは、実装は\n進みません。アグリ・ジパングは関係者を束ねるハブとして機能します。",
       items: [
         {
           title: "自治体 × 企業 × 現場の三者連携",
-          body: "行政計画、企業ニーズ、現場運用のギャップを埋め、実行可能な体制を組成します。",
+          body: "行政計画、企業ニーズ、現場運用のギャップを\n埋め、実行可能な体制を組成します。",
         },
         {
           title: "共同検証パートナーとの推進",
-          body: "外部の研究・検証パートナーと連携し、実証の精度と再現性を高めながら事業化を進めます。",
+          body: "外部の研究・検証パートナーと連携し、実証の\n精度と再現性を高めながら事業化を進めます。",
         },
       ],
       partner: {
@@ -135,7 +135,7 @@ export const translations = {
       subtitle: "アグリ・ジパングは、地域と企業の持続可能な共創を支援します。",
       rows: [
         { label: "会社名", value: "農事組合法人アグリ・ジパング" },
-        { label: "所在地", value: "〒320-0811 栃木県宇都宮市大道り4-1-20 けやき通りビル2F" },
+        { label: "所在地", value: "〒320-0811 栃木県宇都宮市大通り4丁目1番20号 けやき通りビル2F" },
         { label: "設立", value: "平成27年5月26日（2015年）" },
         { label: "代表理事", value: "林 一成（Kazunari Hayashi）" },
         { label: "資本金", value: "1,000万円" },
@@ -151,13 +151,14 @@ export const translations = {
       badge: "お問い合わせ / Contact",
       title: "お問い合わせ・提携相談はこちらから。",
       subtitle:
-        "事業開発、地域脱炭素、共同実証など、検討初期でも構いません。対象地域や課題感が固まりきっていない段階でもご相談いただけます。",
+        "事業開発、地域脱炭素、共同実証など、検討初期でも構いません。\n対象地域や課題感が固まりきっていない段階でもご相談いただけます。",
       infoTitle: "お問い合わせ先",
       infoItems: [
         { label: "メール", content: "inquiry@agrizipang.com", href: "mailto:inquiry@agrizipang.com" },
         { label: "電話", content: "028-625-2809（代）", href: "tel:0286252809" },
         { label: "対応時間", content: "平日 9:00 - 18:00（JST）", href: null },
       ],
+      responseTime: "通常 1〜2 営業日以内にご返信",
     },
     footer: {
       tagline: "地域課題を、事業として前に進める。\n自治体と企業の連携を軸に、持続可能な地域共創を支援します。",
@@ -186,7 +187,7 @@ export const translations = {
       errSend: "送信に失敗しました。",
     },
     quotes: [
-      "農地 × 再エネ × 脱炭素を、\nひとつの事業として設計する。",
+      "農地 × 再エネ × 脱炭素を\nひとつの事業として設計する。",
       "地域の資源を、持続可能な価値へ。\n構想から運用まで、伴走する。",
     ],
     caseStudies: {
@@ -370,6 +371,7 @@ export const translations = {
         { label: "Phone", content: "028-625-2809", href: "tel:0286252809" },
         { label: "Hours", content: "Weekdays 9:00–18:00 (JST)", href: null },
       ],
+      responseTime: "We typically reply within 1–2 business days",
     },
     footer: {
       tagline: "Turning regional challenges into real business.\nSupporting sustainable co-creation between communities and enterprises.",

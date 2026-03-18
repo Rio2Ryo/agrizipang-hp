@@ -90,7 +90,7 @@ export default function RootLayout({
                 "postalCode": "320-0811",
                 "addressLocality": "宇都宮市",
                 "addressRegion": "栃木県",
-                "streetAddress": "大道り4-1-20 けやき通りビル2F",
+                "streetAddress": "大通り4丁目1番20号 けやき通りビル2F",
                 "addressCountry": "JP"
               },
               "email": "inquiry@agrizipang.com",
