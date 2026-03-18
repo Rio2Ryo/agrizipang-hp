@@ -597,7 +597,7 @@ function HomePage() {
         <div className="absolute inset-0 pattern-dots opacity-60 pointer-events-none" />
         <div
           className="absolute top-0 left-0 w-[28rem] h-[28rem] rounded-full blur-3xl pointer-events-none opacity-20"
-          style={{ background: "radial-gradient(circle, #4A90E2, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #3a6b1e, transparent 70%)" }}
         />
         <div
           className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-15"
@@ -658,7 +658,7 @@ function HomePage() {
 
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <p className="text-xs text-white/40 leading-6">
-                    導入相談・共同実証・提携のご相談など、
+                    お問い合わせ・共同実証・提携のご相談など、
                     <br />検討初期段階でもお気軽にお問い合わせください。
                   </p>
                 </div>
