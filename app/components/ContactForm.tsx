@@ -80,7 +80,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "mt-2 w-full rounded-xl border border-slate-300/40 bg-white/90 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/20";
+    "mt-2 w-full rounded-xl border border-slate-300/40 bg-white/90 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-deep focus:ring-2 focus:ring-deep/20";
 
   const labelClass = "block text-sm font-semibold text-white/90";
 
@@ -153,7 +153,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === "loading"}
-        className="w-full rounded-full bg-brand px-6 py-4 font-semibold text-white transition hover:bg-brand/90 disabled:opacity-60 shadow-lg shadow-brand/20"
+        className="w-full rounded-full bg-deep px-6 py-4 font-semibold text-white transition hover:bg-deep/90 disabled:opacity-60 shadow-lg shadow-deep/20"
       >
         {state === "loading" ? t.form.submitting : t.form.submit}
       </button>

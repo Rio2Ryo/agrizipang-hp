@@ -87,7 +87,6 @@ function HomePage() {
     { id: "sustainability", label: t.nav.sustainability },
     { id: "collaboration", label: t.nav.collaboration },
     { id: "company", label: t.nav.company },
-    { id: "contact", label: t.nav.contact },
   ];
 
   return (
@@ -330,26 +329,6 @@ function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════════
-          Mid-page CTA Band
-      ══════════════════════════════════════════════ */}
-      <section className="bg-gradient-to-r from-deep to-[#1a3a09] py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 pattern-dots opacity-20 pointer-events-none" />
-        <div className="reveal relative z-10 mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-200 mb-4">
-            {t.midCta.label}
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-            {t.midCta.title}
-          </h2>
-          <a href="#contact" className="group btn-primary hover-ring">
-            <span className="shine-sweep" />
-            {t.nav.cta}
-            <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════
           Quote Band #2
       ══════════════════════════════════════════════ */}
       <section className="quote-band bg-slate-50 py-28 px-6 relative overflow-hidden">
@@ -543,7 +522,7 @@ function HomePage() {
                   {"isEmail" in row && row.isEmail ? (
                     <a
                       href={`mailto:${row.value}`}
-                      className="text-brand hover:text-brand/80 transition-colors hover:underline"
+                      className="text-deep hover:text-deep/80 transition-colors hover:underline"
                     >
                       {row.value}
                     </a>
@@ -584,15 +563,6 @@ function HomePage() {
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-0.5">法人種別</p>
                     <p className="text-sm text-slate-700">農事組合法人（2019 年設立）</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-brand mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-0.5">Email</p>
-                    <a href="mailto:contact@agrizipang.jp" className="text-sm text-brand hover:underline">
-                      contact@agrizipang.jp
-                    </a>
                   </div>
                 </div>
               </div>

@@ -10,7 +10,6 @@ const navLinks = [
   { key: "sustainability", href: "#sustainability" },
   { key: "collaboration", href: "#collaboration" },
   { key: "company", href: "#company" },
-  { key: "contact", href: "#contact" },
 ];
 
 export default function NavBar() {

@@ -8,15 +8,14 @@ export const translations = {
       sustainability: "Sustainability",
       collaboration: "Collaboration",
       company: "Company",
-      contact: "導入相談",
-      cta: "導入相談をする",
+      cta: "お問い合わせ",
     },
     hero: {
       badge: "B2B / 自治体 / 企業向け",
       title: ["地域課題を、", "事業として", "前に進める。"],
       subtitle:
         "アグリ・ジパングは、自治体と企業の連携を軸に、営農型太陽光発電と CO2 削減ソリューションを主軸とした地域共創プロジェクトを推進します。",
-      ctaPrimary: "導入相談をする",
+      ctaPrimary: "お問い合わせ",
       ctaSecondary: "事業を見る",
       whyTitle: "Why Agri Zipang",
       whySubtitle: "選ばれる理由",
@@ -133,13 +132,12 @@ export const translations = {
         { label: "所在地", value: "栃木県" },
         { label: "設立", value: "2019 年（農事組合法人）" },
         { label: "事業内容", value: "営農型太陽光発電事業、CO2 削減ソリューション、農業支援" },
-        { label: "連絡先", value: "contact@agrizipang.jp", isEmail: true as const },
       ],
       mapTitle: "栃木県地図",
     },
     contact: {
-      badge: "導入相談 / Contact",
-      title: "導入相談・提携相談はこちらから。",
+      badge: "お問い合わせ / Contact",
+      title: "お問い合わせ・提携相談はこちらから。",
       subtitle:
         "事業開発、地域脱炭素、共同実証など、検討初期でも構いません。対象地域や課題感が固まりきっていない段階でもご相談いただけます。",
       infoTitle: "お問い合わせ先",
@@ -201,10 +199,6 @@ export const translations = {
         },
       ],
     },
-    midCta: {
-      label: "Ready to start?",
-      title: "まずは30分の無料相談から。",
-    },
   },
 
   en: {
@@ -214,15 +208,14 @@ export const translations = {
       sustainability: "Sustainability",
       collaboration: "Collaboration",
       company: "Company",
-      contact: "Contact",
-      cta: "Inquire Now",
+      cta: "Contact Us",
     },
     hero: {
       badge: "B2B / Local Government / Enterprise",
       title: ["Turning regional", "challenges into", "real business."],
       subtitle:
         "Agri Zipang drives community co-creation projects centered on agri-solar power and CO2 reduction solutions, bridging local governments and enterprises.",
-      ctaPrimary: "Consult Us",
+      ctaPrimary: "Contact Us",
       ctaSecondary: "Our Business",
       whyTitle: "Why Agri Zipang",
       whySubtitle: "Why Us",
@@ -339,7 +332,6 @@ export const translations = {
         { label: "Location", value: "Tochigi Prefecture, Japan" },
         { label: "Founded", value: "2019 (Agricultural Cooperative)" },
         { label: "Business", value: "Agri-solar power, CO2 reduction solutions, agricultural support" },
-        { label: "Contact", value: "contact@agrizipang.jp", isEmail: true as const },
       ],
       mapTitle: "Tochigi Prefecture Map",
     },
@@ -406,10 +398,6 @@ export const translations = {
           body: "Designing procurement routes and regional circular supply models for converting agricultural waste into biomass fuel.",
         },
       ],
-    },
-    midCta: {
-      label: "Ready to start?",
-      title: "Start with a free 30-minute consultation.",
     },
   },
 } as const;
