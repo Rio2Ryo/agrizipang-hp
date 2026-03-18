@@ -50,11 +50,11 @@ const BUSINESS_PHOTOS = [
 ] as const;
 
 const COLLAB_PHOTOS = [
-  "/images/collaboration-partnership.png",
-  "/images/collaboration-research.png",
+  "/images/collab-partnership.png",
+  "/images/collab-research.png",
 ] as const;
 
-const KPI_BG_PHOTO = "/images/sustainability-data.png";
+const KPI_BG_PHOTO = "/images/sustainability-analytics.png";
 
 // ─── Inner page component (uses useLanguage) ──────────────────────────────────
 
