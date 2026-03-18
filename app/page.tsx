@@ -499,6 +499,32 @@ function HomePage() {
               );
             })}
           </div>
+
+          {/* Mother Vegetable Partnership */}
+          {t.collaboration.partner && (
+            <div className="mt-14 reveal">
+              <div className="rounded-3xl bg-gradient-to-br from-deep/5 via-white to-brand/5 border border-deep/10 p-8 sm:p-10 shadow-lg">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-deep/10 flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-6 h-6 text-deep" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-deep mb-1">{t.collaboration.partner.title}</h3>
+                  </div>
+                </div>
+                <p className="text-sm leading-7 text-slate-600 mb-6">{t.collaboration.partner.body}</p>
+                <a
+                  href={t.collaboration.partner.ctaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-deep px-6 py-3 text-sm font-semibold text-white transition hover:bg-deep/90 shadow-md"
+                >
+                  {t.collaboration.partner.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

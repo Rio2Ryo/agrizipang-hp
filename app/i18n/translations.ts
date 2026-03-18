@@ -104,7 +104,7 @@ export const translations = {
         { label: "CO2 削減量", value: "実証中", unit: "", note: "パイロット案件の実績を準備中" },
         { label: "発電規模", value: "計画中", unit: "", note: "営農型太陽光の導入を推進中" },
         { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
-        { label: "設立", value: "2019", unit: "年", note: "農事組合法人として設立" },
+        { label: "設立", value: "2015", unit: "年", note: "平成27年5月 農事組合法人として設立" },
       ],
     },
     collaboration: {
@@ -122,6 +122,12 @@ export const translations = {
           body: "外部の研究・検証パートナーと連携し、実証の精度と再現性を高めながら事業化を進めます。",
         },
       ],
+      partner: {
+        title: "Mother Vegetable社との連携",
+        body: "アジア圏の海洋産業振興およびMother Vegetable社との連携により、多角的な環境事業を展開しています。海洋分野では藻場の再生活動（ブルーカーボン）や水質改善に取り組み、バイオマス分野ではエネルギー自給率の向上を目指して油脂植物からバイオディーゼルやバイオエタノール等の液体燃料を生産・提供しています。農業分野においては食料自給率の向上や酪農・畜産農家における飼料コストの削減を推進し、バイオスティミュラント（バイオマスイオンペレット）や植物バイオマスを活用する試みを行っています。",
+        cta: "商品購入はこちら",
+        ctaUrl: "https://zrtradingbd.com",
+      },
     },
     company: {
       tag: "Company",
@@ -328,6 +334,12 @@ export const translations = {
           body: "Working with external research and verification partners, we advance commercialization with improved pilot accuracy and reproducibility.",
         },
       ],
+      partner: {
+        title: "Partnership with Mother Vegetable",
+        body: "In collaboration with Mother Vegetable, we are expanding diversified environmental businesses across Asia. In the marine sector, we work on seaweed bed restoration (blue carbon) and water quality improvement. In biomass, we produce and supply liquid fuels such as biodiesel and bioethanol from oil-bearing plants to improve energy self-sufficiency. In agriculture, we promote food self-sufficiency and reduce feed costs for dairy and livestock farmers through biostimulants (biomass ion pellets) and plant biomass utilization.",
+        cta: "Shop Products",
+        ctaUrl: "https://zrtradingbd.com",
+      },
     },
     company: {
       tag: "Company",
