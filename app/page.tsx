@@ -133,7 +133,7 @@ function HomePage() {
         </div>
 
         {/* Main content — centered layout */}
-        <div className="relative z-10 mx-auto max-w-5xl px-6 py-36 w-full text-center">
+        <div className="relative z-10 mx-auto max-w-5xl px-8 sm:px-6 py-28 sm:py-36 w-full text-center">
 
           {/* Badge pill — hero-1 */}
           <div className="hero-1 flex justify-center mb-8">
@@ -144,7 +144,7 @@ function HomePage() {
           </div>
 
           {/* H1 — hero-2 */}
-          <h1 className="hero-2 font-serif text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-black tracking-tighter leading-[0.9] mb-8">
+          <h1 className="hero-2 font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[96px] font-black tracking-tighter leading-[1.1] sm:leading-[0.9] mb-8">
             <span className="text-white block">{t.hero.title[0]}</span>
             <span className="block bg-gradient-to-r from-brand-200 via-white/90 to-brand bg-clip-text text-transparent">
               {t.hero.title[1]}
@@ -155,7 +155,7 @@ function HomePage() {
           {/* Accent bar + subtitle — hero-3 */}
           <div className="hero-3 flex flex-col items-center">
             <div className="w-20 h-1 bg-gradient-to-r from-brand-200 via-brand/60 to-transparent mb-8 rounded-full" />
-            <p className="text-xl leading-relaxed text-white/75 mb-10 max-w-2xl">
+            <p className="text-base sm:text-xl leading-relaxed text-white/75 mb-10 max-w-2xl text-left sm:text-center px-2 sm:px-0">
               {t.hero.subtitle}
             </p>
           </div>
@@ -192,7 +192,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           About Section — Apple-style split
       ══════════════════════════════════════════════ */}
-      <section id="about" className="mx-auto max-w-7xl px-6 py-28">
+      <section id="about" className="mx-auto max-w-7xl px-8 sm:px-6 py-20 sm:py-28">
         <div className="grid gap-16 lg:grid-cols-2 items-center">
 
           {/* Left: 2×2 image mosaic */}
@@ -247,7 +247,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Quote Band #1
       ══════════════════════════════════════════════ */}
-      <section className="quote-band bg-deep py-28 px-6 relative">
+      <section className="quote-band bg-deep py-20 sm:py-28 px-8 sm:px-6 relative">
         <div className="absolute inset-0 pattern-dots opacity-30 pointer-events-none" />
         {/* SVG solar panel decoration */}
         <svg className="absolute right-8 top-8 w-48 h-48 text-white/[0.04] svg-bg-pulse" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -258,7 +258,7 @@ function HomePage() {
           <rect x="45" y="70" width="10" height="25" rx="1" />
         </svg>
         <blockquote className="reveal relative z-10 mx-auto max-w-4xl text-center">
-          <p className="font-serif text-3xl md:text-5xl font-bold text-white leading-snug tracking-tight whitespace-pre-line">
+          <p className="font-serif text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-snug tracking-tight whitespace-pre-line">
             {t.quotes[0]}
           </p>
         </blockquote>
@@ -267,7 +267,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Business Section — cards with full-bleed top photos
       ══════════════════════════════════════════════ */}
-      <section id="business" className="bg-slate-50/80 px-6 py-28">
+      <section id="business" className="bg-slate-50/80 px-8 sm:px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl">
 
           {/* Header */}
@@ -331,14 +331,14 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Quote Band #2
       ══════════════════════════════════════════════ */}
-      <section className="quote-band bg-slate-50 py-28 px-6 relative overflow-hidden">
+      <section className="quote-band bg-slate-50 py-20 sm:py-28 px-8 sm:px-6 relative overflow-hidden">
         {/* SVG leaf decoration */}
         <svg className="absolute left-8 bottom-8 w-40 h-40 text-deep/[0.04] svg-bg-pulse animate-slow-drift" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 5 C20 20 5 50 15 80 C25 60 40 45 50 35 C60 45 75 60 85 80 C95 50 80 20 50 5Z" />
           <line x1="50" y1="35" x2="50" y2="95" stroke="currentColor" strokeWidth="3" fill="none" />
         </svg>
         <blockquote className="reveal relative z-10 mx-auto max-w-4xl text-center">
-          <p className="font-serif text-3xl md:text-5xl font-bold text-deep leading-snug tracking-tight whitespace-pre-line">
+          <p className="font-serif text-2xl sm:text-3xl md:text-5xl font-bold text-deep leading-snug tracking-tight whitespace-pre-line">
             {t.quotes[1]}
           </p>
         </blockquote>
@@ -347,7 +347,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Sustainability Section
       ══════════════════════════════════════════════ */}
-      <section id="sustainability" className="mx-auto max-w-7xl px-6 py-28">
+      <section id="sustainability" className="mx-auto max-w-7xl px-8 sm:px-6 py-20 sm:py-28">
         <div className="grid gap-16 lg:grid-cols-2">
 
           {/* Left column */}
@@ -443,7 +443,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Collaboration Section — photo + glass overlay
       ══════════════════════════════════════════════ */}
-      <section id="collaboration" className="bg-slate-50/80 px-6 py-28">
+      <section id="collaboration" className="bg-slate-50/80 px-8 sm:px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="reveal max-w-3xl">
             <span className="tag mb-4">{t.collaboration.tag}</span>
@@ -500,7 +500,7 @@ function HomePage() {
       {/* ══════════════════════════════════════════════
           Company Section
       ══════════════════════════════════════════════ */}
-      <section id="company" className="mx-auto max-w-7xl px-6 py-28">
+      <section id="company" className="mx-auto max-w-7xl px-8 sm:px-6 py-20 sm:py-28">
 
         {/* Header */}
         <div className="reveal max-w-3xl">

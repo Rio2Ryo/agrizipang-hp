@@ -3,11 +3,11 @@ export type Language = "ja" | "en";
 export const translations = {
   ja: {
     nav: {
-      about: "About",
-      business: "Business",
-      sustainability: "Sustainability",
-      collaboration: "Collaboration",
-      company: "Company",
+      about: "私たちについて",
+      business: "事業内容",
+      sustainability: "サステナビリティ",
+      collaboration: "協業・連携",
+      company: "会社概要",
       cta: "お問い合わせ",
     },
     hero: {
