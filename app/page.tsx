@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
-  ChevronDown,
   Globe,
   Handshake,
   Leaf,
@@ -115,21 +114,6 @@ function HomePage() {
                 <span>{t.hero.ctaSecondary}</span>
               </a>
             </div>
-          </div>
-
-          <div className="reveal mt-14 flex items-center justify-between gap-6 border-t border-white/15 pt-6 text-white/78 max-md:flex-col max-md:items-start">
-            <div className="grid gap-4 sm:grid-cols-3 sm:gap-8">
-              {t.hero.metrics.map((item) => (
-                <div key={item.label}>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">{item.label}</p>
-                  <p className="mt-2 text-sm font-medium text-white/88 sm:text-base">{item.value}</p>
-                </div>
-              ))}
-            </div>
-            <a href="#about" className="scroll-cue">
-              <span>{lang === "ja" ? "Scroll" : "Scroll"}</span>
-              <ChevronDown className="h-4 w-4" />
-            </a>
           </div>
         </div>
       </section>
