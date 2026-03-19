@@ -14,6 +14,22 @@ body {
   @apply bg-white text-slate-900;
 }
 
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .bento-grid > :first-child {
+    grid-row: 1 / 3;
+  }
+}
+
 /* ─── Dot pattern overlay ─────────────────────────────── */
 .pattern-dots {
   background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px);
@@ -67,9 +83,13 @@ body {
 
 /* ─── Button: primary ─────────────────────────────────── */
 .btn-primary {
-  @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-deep to-deep/90 px-8 py-4 font-semibold text-white shadow-lg shadow-deep/30 transition-all duration-300 hover:shadow-xl hover:shadow-deep/40 hover:-translate-y-0.5;
+  @apply relative inline-flex items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white/95 px-8 py-4 font-semibold text-deep shadow-[0_18px_45px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white;
 }
 /* shine overlay lives inside .btn-primary via .shine-sweep */
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white/50;
+}
 
 /* ─── Button: secondary ───────────────────────────────── */
 .btn-secondary {
@@ -131,16 +151,53 @@ body {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ─── Hero stagger animations ─────────────────────────── */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(36px); }
-  to   { opacity: 1; transform: translateY(0);    }
+/* ─── Hero intro fade ─────────────────────────────────── */
+@keyframes kenBurnsHero {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.11);
+  }
 }
-.hero-1 { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
-.hero-2 { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
-.hero-3 { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
-.hero-4 { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.50s both; }
-.hero-5 { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+
+.kenburns-wrap {
+  overflow: hidden;
+}
+
+.kenburns-image {
+  animation: kenBurnsHero 18s ease-out forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hero-line {
+  display: block;
+}
+
+.hero-fade-1 { animation-delay: 0s; }
+.hero-fade-2 { animation-delay: 0.3s; }
+.hero-fade-3 { animation-delay: 0.6s; }
+.hero-fade-4 { animation-delay: 0.9s; }
+.hero-fade-5 { animation-delay: 1.2s; }
+.hero-fade-6 { animation-delay: 1.5s; }
 
 /* ─── Float animation ─────────────────────────────────── */
 @keyframes floatY {
@@ -272,9 +329,118 @@ body {
 
 /* ─── Section-specific typography overrides ───────────── */
 .section-title-alt {
-  @apply font-serif text-3xl font-bold tracking-tight text-deep md:text-5xl leading-[1.1];
+  @apply font-serif text-4xl font-bold tracking-tight text-deep md:text-5xl leading-[1.1];
 }
 
 .section-number {
   @apply block text-8xl font-black font-serif leading-none text-deep/[0.06];
+}
+
+/* ═══════════════════════════════════════════════════════
+   WOW FEATURES
+═══════════════════════════════════════════════════════ */
+
+/* ─── Floating particles (hero) ───────────────────────── */
+@keyframes particleRise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  8%   { opacity: 0.75; }
+  85%  { opacity: 0.2; }
+  100% { transform: translateY(-92vh) translateX(var(--pdrift, 15px)) scale(0.3); opacity: 0; }
+}
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background: radial-gradient(circle at 30% 30%, rgba(120, 230, 140, 0.75), rgba(74, 144, 226, 0.35) 55%, transparent);
+  animation: particleRise var(--pdur, 9s) ease-in var(--pdelay, 0s) infinite;
+}
+
+/* ─── Timeline spine ──────────────────────────────────── */
+.timeline-spine {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(45,80,22,0.55) 12%, rgba(74,144,226,0.5) 82%, transparent 100%);
+}
+@media (min-width: 768px) {
+  .timeline-spine {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Timeline item reveal ────────────────────────────── */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.timeline-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── CountUp number ──────────────────────────────────── */
+.countup-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.025em;
+}
+
+/* ─── CO2 tree counter pulse ─────────────────────────── */
+@keyframes treePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+.tree-pulse {
+  display: inline-block;
+  animation: treePulse 2.5s ease-in-out infinite;
+}
+
+/* ─── Business horizontal snap (lg+) ─────────────────── */
+@media (min-width: 1024px) {
+  .business-snap-track {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding-bottom: 1.25rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    cursor: grab;
+  }
+  .business-snap-track:active {
+    cursor: grabbing;
+  }
+  .business-snap-track::-webkit-scrollbar {
+    display: none;
+  }
+  .business-snap-card {
+    flex: 0 0 400px !important;
+    scroll-snap-align: start;
+    max-width: 400px;
+  }
+}
+
+/* ─── Scroll progress indicator ──────────────────────── */
+.scroll-prog-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(45,80,22,0.25);
+  transition: background 0.3s, transform 0.3s;
+}
+.scroll-prog-dot.active {
+  background: #2D5016;
+  transform: scale(1.4);
+}
+
+/* ─── Tilt card ───────────────────────────────────────── */
+.tilt-ready {
+  transform-style: preserve-3d;
+  will-change: transform;
 }

@@ -61,17 +61,17 @@ export default function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-8 flex flex-col items-center justify-center gap-5 py-16 text-center">
-        <div className="w-16 h-16 rounded-full bg-brand/20 flex items-center justify-center">
-          <CheckCircle2 className="w-9 h-9 text-brand-200" />
+      <div className="flex flex-col items-center justify-center gap-6 rounded-[1.75rem] border border-stone-200/80 bg-stone-50 px-6 py-16 text-center sm:px-8">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand/12">
+          <CheckCircle2 className="h-9 w-9 text-deep" />
         </div>
-        <h3 className="text-xl font-bold text-white">{t.form.successTitle}</h3>
-        <p className="max-w-sm text-sm leading-7 text-white/70 whitespace-pre-line">
+        <h3 className="text-xl font-bold text-deep">{t.form.successTitle}</h3>
+        <p className="max-w-sm text-sm leading-8 text-stone-600 whitespace-pre-line">
           {t.form.successBody}
         </p>
         <button
           onClick={() => setState("idle")}
-          className="mt-2 rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+          className="mt-2 rounded-full border border-stone-300 px-6 py-2.5 text-sm font-semibold text-deep transition hover:bg-stone-100"
         >
           {t.form.reset}
         </button>
@@ -80,13 +80,13 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "mt-2 w-full rounded-xl border border-slate-300/40 bg-white/90 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-deep focus:ring-2 focus:ring-deep/20";
+    "mt-3 w-full rounded-2xl border border-stone-300/80 bg-stone-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition placeholder:text-stone-400 focus:border-deep focus:ring-2 focus:ring-deep/15";
 
-  const labelClass = "block text-sm font-semibold text-white/90";
+  const labelClass = "block text-sm font-semibold tracking-[0.01em] text-deep";
 
   return (
     <form
-      className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-6 space-y-5"
+      className="rounded-[1.75rem] border border-stone-200/80 bg-white p-7 sm:p-8 space-y-7"
       onSubmit={handleSubmit}
       noValidate
     >
@@ -145,7 +145,7 @@ export default function ContactForm() {
       </div>
 
       {state === "error" && errorMsg && (
-        <p className="rounded-xl bg-red-900/40 border border-red-400/30 px-4 py-3 text-sm text-red-300">
+        <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {errorMsg}
         </p>
       )}
@@ -153,11 +153,11 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === "loading"}
-        className="w-full rounded-full bg-deep px-6 py-4 font-semibold text-white transition hover:bg-deep/90 disabled:opacity-60 shadow-lg shadow-deep/20"
+        className="w-full rounded-full bg-deep px-6 py-4 font-semibold text-white transition hover:bg-deep/90 disabled:opacity-60 shadow-[0_16px_36px_rgba(45,80,22,0.16)]"
       >
         {state === "loading" ? t.form.submitting : t.form.submit}
       </button>
-      <p className="text-xs text-white/40">
+      <p className="text-xs leading-6 text-stone-400">
         {t.form.required}
       </p>
     </form>

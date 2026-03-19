@@ -1,0 +1,115 @@
+{
+  "timestamp": "2026-03-19T00:59:35.582Z",
+  "url": "https://agrizipang-hp.vercel.app",
+  "screenshotPath": "/root/.openclaw/workspace/agrizipang-hp/hero-screenshot.png",
+  "measurements": {
+    "h1": {
+      "text": "地域課題を、事業として前に進める。",
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontSize": "136px",
+        "fontWeight": "900",
+        "textShadow": "rgba(0, 0, 0, 0.9) 0px 8px 50px",
+        "opacity": "1",
+        "lineHeight": "136px",
+        "letterSpacing": "-5.44px"
+      },
+      "rect": {
+        "x": 360,
+        "y": 276.5,
+        "width": 896,
+        "height": 408,
+        "top": 276.5,
+        "right": 1256,
+        "bottom": 684.5,
+        "left": 360
+      }
+    },
+    "kicker": {
+      "text": "B2B / 自治体 / 企業向け",
+      "styles": {
+        "color": "rgb(28, 25, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "textShadow": "none",
+        "opacity": "1",
+        "lineHeight": "24px",
+        "letterSpacing": "normal"
+      },
+      "rect": {
+        "x": 360,
+        "y": 228.5,
+        "width": 171,
+        "height": 24,
+        "top": 228.5,
+        "right": 531,
+        "bottom": 252.5,
+        "left": 360
+      }
+    },
+    "subtitle": {
+      "text": "アグリ・ジパングは、自治体と企業の連携を軸に、営農型太陽光発電と CO2 削減ソリューションを通じて、地域の農業・脱炭素事業を推進します。",
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "textShadow": "none",
+        "opacity": "0.855324",
+        "lineHeight": "36px",
+        "letterSpacing": "normal"
+      },
+      "rect": {
+        "x": 360,
+        "y": 720.84033203125,
+        "width": 672,
+        "height": 72,
+        "top": 720.84033203125,
+        "right": 1032,
+        "bottom": 792.84033203125,
+        "left": 360
+      }
+    },
+    "overlay": {
+      "backgroundImage": "none",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1080,
+        "left": 0
+      }
+    }
+  },
+  "contrastRatios": [
+    {
+      "backgroundColor": "#040d02",
+      "ratio": 19.744106505802698,
+      "wcagAA": true,
+      "wcagAAA": true
+    },
+    {
+      "backgroundColor": "#0a1a04",
+      "ratio": 18.065807110625318,
+      "wcagAA": true,
+      "wcagAAA": true
+    },
+    {
+      "backgroundColor": "#061505",
+      "ratio": 18.79697229831864,
+      "wcagAA": true,
+      "wcagAAA": true
+    }
+  ],
+  "issues": [],
+  "recommendations": {
+    "overlay": "背景オーバーレイの不透明度を 0.95-1.0 に上げてコントラストを確保",
+    "textShadow": "マルチレイヤーの文字影で可読性向上",
+    "fontSize": "現在のサイズで十分（48px 以上）"
+  }
+}

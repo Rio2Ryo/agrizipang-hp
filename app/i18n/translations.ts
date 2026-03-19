@@ -14,7 +14,7 @@ export const translations = {
       badge: "B2B / 自治体 / 企業向け",
       title: ["地域課題を、", "事業として", "前に進める。"],
       subtitle:
-        "アグリ・ジパングは、自治体と企業の連携を軸に、営農型太陽光発電と CO2 削減ソリューションを主軸とした地域共創プロジェクトを推進します。",
+        "アグリ・ジパングは、自治体と企業の連携を軸に、営農型太陽光発電と CO2 削減ソリューションを通じて、地域の農業・脱炭素事業を推進します。",
       ctaPrimary: "お問い合わせ",
       ctaSecondary: "事業を見る",
       whyTitle: "Why Agri Zipang",
@@ -28,26 +28,26 @@ export const translations = {
       metrics: [
         { label: "支援対象", value: "自治体・企業" },
         { label: "主軸事業", value: "営農型太陽光 / CO2 削減" },
-        { label: "支援範囲", value: "構想→実証→運用" },
+        { label: "拠点", value: "栃木県宇都宮市" },
       ],
     },
     about: {
       tag: "About",
       title: "農業を起点に\n地域と企業の接続点をつくる。",
       subtitle:
-        "地域資源の活用、脱炭素対応、事業性の確保。どれか一つだけでは前に進まないテーマに対して、アグリ・ジパングは複数の関係者をつなぎ\n前提整理から実装までを設計します。",
+        "地域資源の活用、脱炭素対応、事業性の確保。農事組合法人として、農業・再生可能エネルギー・CO2 削減の複数領域を横断し、地域に根ざした事業を展開します。",
       cards: [
         {
-          title: "自治体・企業への実行支援",
-          body: "計画立案から現場実装まで、行政と企業の双方に向けた実行可能な提案と伴走型サポートを行います。",
+          title: "農業経営・栽培技術のコンサルティング",
+          body: "農業経営の改善から栽培技術の導入まで、農家・事業者向けに実践的なコンサルティングを提供します。",
         },
         {
           title: "農地と再エネの両立設計",
           body: "営農型太陽光を主軸に、農業機能を守りながら地域の脱炭素化を推進。農地活用と事業性を両立します。",
         },
         {
-          title: "CO2 削減の可視化と信頼性",
-          body: "削減量・根拠・指標を整理し、行政の計画策定・企業の ESG 開示に耐える水準で数値を提示します。",
+          title: "CO2 削減への取り組み",
+          body: "森林（植林）・海藻（吸収/埋没）・特殊家畜飼料など複数の手法を組み合わせ、CO2 削減に貢献します。",
         },
       ],
     },
@@ -81,28 +81,28 @@ export const translations = {
         "初版では複雑な可視化よりも、自治体・企業が理解しやすい基本指標を明確に提示することを重視しています。",
       kpiLabel: "初期 KPI 例",
       kpiItems: [
-        "CO2 削減量：実証データ集計中",
-        "対象領域：森林 / 海藻 / 飼料",
+        "対象領域：森林（植林）/ 海藻 / 特殊家畜飼料",
         "対象地域：栃木県内",
+        "海外早生樹（Paulownia）の植林・育苗事業",
       ],
       items: [
         {
-          title: "数値で語れる脱炭素",
-          body: "CO2 削減量、対象領域、対象地域など、初期段階から説明責任を果たせる指標設計を重視します。",
+          title: "多角的なCO2削減手法",
+          body: "森林（植林）・海藻（吸収/埋没）・特殊家畜飼料など、複数手法を組み合わせたCO2削減に取り組みます。",
         },
         {
-          title: "地域に残る仕組みづくり",
-          body: "単発の実証で終わらせず、地域雇用・運営体制・継続予算まで見据えた実装を進めます。",
+          title: "海外早生樹による植林事業",
+          body: "海外でのPaulownia（早生樹）の生産・育苗・輸入販売を通じて、再造林・CO2吸収に貢献します。",
         },
         {
-          title: "企業の事業性との両立",
-          body: "ESG だけでなく、投資判断・調達要件・供給安定性まで見据えた B2B 設計を行います。",
+          title: "農業資材・バイオマスの活用",
+          body: "微生物資材・酵素・液肥・堆肥・バイオマス発電燃料など、農業の高付加価値化と脱炭素を支援します。",
         },
       ],
       metricsHeading: "実績・指標",
       kpiMetrics: [
-        { label: "CO2 削減量", value: "実証中", unit: "", note: "パイロット案件の実績を準備中" },
-        { label: "発電規模", value: "計画中", unit: "", note: "営農型太陽光の導入を推進中" },
+        { label: "主軸事業", value: "3", unit: "本柱", note: "営農型太陽光 / CO2削減 / 農業資材・早生樹" },
+        { label: "CO2削減手法", value: "3", unit: "手法", note: "森林・海藻・特殊家畜飼料" },
         { label: "対応エリア", value: "栃木県", unit: "全域", note: "2026 年現在" },
         { label: "設立", value: "2015", unit: "年", note: "平成27年5月 農事組合法人として設立" },
       ],
@@ -111,22 +111,22 @@ export const translations = {
       tag: "Collaboration",
       title: "連携プロジェクトとして\n実証精度を高める。",
       subtitle:
-        "行政、企業、現場、研究・検証パートナーが分断されたままでは、実装は\n進みません。アグリ・ジパングは関係者を束ねるハブとして機能します。",
+        "アグリ・ジパングは、地域の農業・自治体・企業と連携しながら、営農型太陽光発電・CO2削減・農業資材の各領域で事業を展開しています。",
       items: [
         {
-          title: "自治体 × 企業 × 現場の三者連携",
-          body: "行政計画、企業ニーズ、現場運用のギャップを\n埋め、実行可能な体制を組成します。",
+          title: "地域 × 行政 × 企業との連携",
+          body: "農事組合法人として地域に根ざし、行政・企業・農家との連携を通じて持続可能な農業・環境事業を推進します。",
         },
         {
-          title: "共同検証パートナーとの推進",
-          body: "外部の研究・検証パートナーと連携し、実証の\n精度と再現性を高めながら事業化を進めます。",
+          title: "アジア・国際パートナーとの連携",
+          body: "ZR Trading との連携を通じて、バングラデシュをはじめとするアジア・中東での植林・環境事業を展開します。",
         },
       ],
       partner: {
         title: "Mother Vegetable社との連携",
-        body: "アジア圏の海洋産業振興およびMother Vegetable社との連携により、多角的な環境事業を展開しています。海洋分野では藻場の再生活動（ブルーカーボン）や水質改善に取り組み、バイオマス分野ではエネルギー自給率の向上を目指して油脂植物からバイオディーゼルやバイオエタノール等の液体燃料を生産・提供しています。農業分野においては食料自給率の向上や酪農・畜産農家における飼料コストの削減を推進し、バイオスティミュラント（バイオマスイオンペレット）や植物バイオマスを活用する試みを行っています。",
+        body: "アジア圏の海洋産業振興およびMother Vegetable社との連携により、多角的な環境事業を展開しています。海洋分野では藻場の再生活動（ブルーカーボン）や水質改善に取り組み、バイオマス分野ではエネルギー自給率の向上を目指して油脂植物からバイオディーゼルやバイオエタノール等の液体燃料を生産・提供しています。そのほか農業分野においては食料自給率の向上や酪農・畜産農家における飼料コストの削減の推進し、バイオスティミュラント（バイオマスイオンペレット）や植物バイオマスを活用する試みを行っています。",
         cta: "商品購入はこちら",
-        ctaUrl: "https://zrtradingbd.com",
+        ctaUrl: "https://mothervegetable.com/?instructor_code=agrizipang",
       },
     },
     company: {
@@ -143,7 +143,6 @@ export const translations = {
         { label: "事業内容", value: "営農型太陽光発電事業 / CO2削減ソリューション（森林・海藻・特殊家畜飼料） / 海外早生樹の生産・育苗・輸入販売 / 農産物の生産・販売 / 無農薬栽培システムの製造・販売 / 農業経営・栽培技術コンサルティング / 微生物資材・酵素の製造・販売 / 液肥・堆肥植物活性資材の製造・販売 / バイオマス発電燃料の生産・調達・販売" },
         { label: "電話", value: "028-625-2809（代）" },
         { label: "メール", value: "inquiry@agrizipang.com" },
-        { label: "URL", value: "https://zrtradingbd.com" },
       ],
       mapTitle: "栃木県宇都宮市",
     },
@@ -188,7 +187,7 @@ export const translations = {
     },
     quotes: [
       "農地 × 再エネ × 脱炭素を\nひとつの事業として設計する。",
-      "地域の資源を、持続可能な価値へ。\n構想から運用まで、伴走する。",
+      "農地と再エネ。\n両立させて、地域の未来をつくる。",
     ],
     caseStudies: {
       tag: "Case Studies",
@@ -227,7 +226,7 @@ export const translations = {
       badge: "B2B / Local Government / Enterprise",
       title: ["Turning regional", "challenges into", "real business."],
       subtitle:
-        "Agri Zipang drives community co-creation projects centered on agri-solar power and CO2 reduction solutions, bridging local governments and enterprises.",
+        "Agri Zipang advances agri-solar power, CO2 reduction, and agricultural materials businesses, bridging local governments, enterprises, and farming communities.",
       ctaPrimary: "Contact Us",
       ctaSecondary: "Our Business",
       whyTitle: "Why Agri Zipang",
@@ -241,26 +240,26 @@ export const translations = {
       metrics: [
         { label: "Clients", value: "Gov & Corp" },
         { label: "Core", value: "Agri-Solar / CO2" },
-        { label: "Scope", value: "Plan→Demo→Ops" },
+        { label: "Base", value: "Utsunomiya, Tochigi" },
       ],
     },
     about: {
       tag: "About",
       title: "Connecting agriculture to local and corporate ecosystems.",
       subtitle:
-        "Regional resource utilization, decarbonization, and business viability — Agri Zipang bridges stakeholders and designs the path from premise-setting to implementation.",
+        "As an agricultural cooperative, Agri Zipang operates across agriculture, renewable energy, and CO2 reduction — delivering regional, grounded, and practical environmental business.",
       cards: [
         {
-          title: "Execution support for gov & enterprise",
-          body: "We provide actionable proposals and hands-on support for both public and private sectors, from planning to field implementation.",
+          title: "Agricultural & cultivation consulting",
+          body: "We offer practical consulting for farm management improvement and cultivation technology adoption for farmers and agricultural businesses.",
         },
         {
           title: "Balancing farmland and renewable energy",
           body: "With agri-solar as our core, we advance regional decarbonization while preserving agricultural functions.",
         },
         {
-          title: "Transparent CO2 reduction metrics",
-          body: "We structure reduction volumes, rationale, and KPIs to meet the standards required for municipal planning and corporate ESG disclosure.",
+          title: "Multi-approach CO2 reduction",
+          body: "We address CO2 reduction through forestry (reforestation), seaweed (absorption/burial), and specialty livestock feed — combining multiple proven approaches.",
         },
       ],
     },
@@ -294,52 +293,52 @@ export const translations = {
         "Rather than complex visualizations, we prioritize clearly presenting foundational metrics that governments and enterprises can easily understand.",
       kpiLabel: "Initial KPI Example",
       kpiItems: [
-        "CO2 reduction: pilot data in progress",
-        "Target domains: forest / seaweed / feed",
+        "Target domains: forest / seaweed / specialty livestock feed",
         "Target area: Tochigi Prefecture",
+        "Overseas fast-growing tree (Paulownia) production & import",
       ],
       items: [
         {
-          title: "Decarbonization backed by data",
-          body: "We prioritize accountability from the earliest stage — structuring CO2 reduction volumes, target domains, and regional scope.",
+          title: "Multi-approach CO2 reduction",
+          body: "We combine forestry (reforestation), seaweed (absorption/burial), and specialty livestock feed to deliver practical CO2 reduction.",
         },
         {
-          title: "Building systems that stay in the community",
-          body: "We go beyond one-off pilots, building toward local employment, operational capacity, and sustained funding.",
+          title: "Fast-growing tree reforestation",
+          body: "Through Paulownia production, seedling cultivation, and import sales overseas, we contribute to reforestation and CO2 absorption.",
         },
         {
-          title: "Compatible with corporate business models",
-          body: "Beyond ESG, we design for investment decisions, procurement requirements, and supply stability.",
+          title: "Agricultural materials & biomass",
+          body: "We support agricultural value enhancement and decarbonization through microbial materials, enzymes, liquid fertilizer, compost, and biomass fuel.",
         },
       ],
       metricsHeading: "Metrics & Results",
       kpiMetrics: [
-        { label: "CO2 Reduction", value: "Piloting", unit: "", note: "Results from pilot projects in preparation" },
-        { label: "Generation Scale", value: "Planning", unit: "", note: "Advancing agri-solar deployment" },
+        { label: "Core Businesses", value: "3", unit: "pillars", note: "Agri-solar / CO2 reduction / Agri materials & trees" },
+        { label: "CO2 Reduction Methods", value: "3", unit: "approaches", note: "Forest · Seaweed · Livestock feed" },
         { label: "Service Area", value: "Tochigi", unit: "Pref.", note: "As of 2026" },
-        { label: "Founded", value: "2019", unit: "year", note: "As Agricultural Corp." },
+        { label: "Founded", value: "2015", unit: "year", note: "May 2015, Agricultural Cooperative Corp." },
       ],
     },
     collaboration: {
       tag: "Collaboration",
       title: "Elevating pilot precision through strategic collaboration.",
       subtitle:
-        "Implementation stalls when government, business, field operations, and research partners remain disconnected. Agri Zipang functions as the hub that unites stakeholders.",
+        "Agri Zipang operates in collaboration with local communities, government, enterprises, and international partners across agri-solar, CO2 reduction, and agricultural materials.",
       items: [
         {
-          title: "Trilateral: Gov × Corp × Field",
-          body: "We bridge the gaps between municipal planning, corporate needs, and on-site operations to build an executable structure.",
+          title: "Regional × Government × Enterprise collaboration",
+          body: "As an agricultural cooperative rooted in Tochigi, we collaborate with local government, enterprises, and farmers to drive sustainable agricultural and environmental business.",
         },
         {
-          title: "Joint verification with research partners",
-          body: "Working with external research and verification partners, we advance commercialization with improved pilot accuracy and reproducibility.",
+          title: "Asia & international partner network",
+          body: "Through our partnership with ZR Trading, we expand reforestation and environmental businesses across Bangladesh, Asia, and the Middle East.",
         },
       ],
       partner: {
         title: "Partnership with Mother Vegetable",
         body: "In collaboration with Mother Vegetable, we are expanding diversified environmental businesses across Asia. In the marine sector, we work on seaweed bed restoration (blue carbon) and water quality improvement. In biomass, we produce and supply liquid fuels such as biodiesel and bioethanol from oil-bearing plants to improve energy self-sufficiency. In agriculture, we promote food self-sufficiency and reduce feed costs for dairy and livestock farmers through biostimulants (biomass ion pellets) and plant biomass utilization.",
         cta: "Shop Products",
-        ctaUrl: "https://zrtradingbd.com",
+        ctaUrl: "https://mothervegetable.com/?instructor_code=agrizipang",
       },
     },
     company: {
@@ -356,7 +355,6 @@ export const translations = {
         { label: "Business", value: "Agri-solar power / CO2 reduction (forestry, seaweed, specialty livestock feed) / Fast-growing tree production & import / Crop production & sales / Pesticide-free cultivation systems / Agricultural consulting / Biomass fuel production" },
         { label: "Phone", value: "028-625-2809" },
         { label: "Email", value: "inquiry@agrizipang.com" },
-        { label: "URL", value: "https://zrtradingbd.com" },
       ],
       mapTitle: "Utsunomiya, Tochigi",
     },
@@ -401,7 +399,7 @@ export const translations = {
     },
     quotes: [
       "Farmland × Renewables × Decarbonization —\ndesigned as one business.",
-      "Turning regional resources into\nsustainable value. From concept to operation.",
+      "Farmland and renewables.\nBalancing both to build the region’s future.",
     ],
     caseStudies: {
       tag: "Case Studies",
