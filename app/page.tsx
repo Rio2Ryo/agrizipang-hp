@@ -117,7 +117,7 @@ function HomePage() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end px-6 pb-12 pt-32 sm:px-8 md:pb-16 lg:px-10">
           <div className="max-w-4xl">
-            <span className="hero-kicker hero-fade hero-fade-1">{t.hero.badge}</span>
+            <span className="hero-kicker hero-fade hero-fade-1 inline-block rounded-full bg-white/20 backdrop-blur-sm px-5 py-2 text-sm font-semibold tracking-widest text-white uppercase border border-white/30" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>{t.hero.badge}</span>
             <h1
               className="mt-6 font-serif text-5xl font-black leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl md:text-8xl lg:text-[8.5rem]"
               style={{ textShadow: "0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(255,255,255,0.15)" }}
