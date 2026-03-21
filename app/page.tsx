@@ -214,7 +214,7 @@ function HomePage() {
       </section>
 
       <section className="quote-band-photo relative overflow-hidden px-6 py-28 sm:px-8 md:py-36 lg:px-10 lg:py-40">
-        <Image src={BUSINESS_PHOTOS[0]} alt="Agri Zipang vision" fill sizes="100vw" className="object-cover scale-[1.04]" />
+        <Image src="/images/vision-landscape.png" alt="Agri Zipang vision" fill sizes="100vw" className="object-cover scale-[1.04]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,2,0.6)_0%,rgba(3,8,2,0.72)_100%)]" />
         <blockquote className="reveal relative z-10 mx-auto max-w-6xl">
           <p className="font-serif text-2xl font-semibold leading-[1.2] tracking-[-0.03em] text-white whitespace-pre-line sm:text-3xl md:text-4xl lg:text-5xl">
