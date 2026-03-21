@@ -32,7 +32,7 @@ const BUSINESS_PHOTOS = [
 ] as const;
 const QUOTE_PHOTOS = [
   "/images/sustainability-community.png",
-  "/images/collab-partnership.png",
+  "/images/collab-meeting.png",
 ] as const;
 const COLLAB_PHOTOS = [
   "/images/collab-partnership.png",
