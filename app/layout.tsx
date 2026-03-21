@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import { PostHogProvider } from "./providers";
 
 const notoSans = Noto_Sans_JP({
   subsets: ["latin"],
@@ -104,7 +105,7 @@ export default function RootLayout({
             })
           }}
         />
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
       </body>
     </html>
   );
