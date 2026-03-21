@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Volume2, VolumeX } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 const navLinks = [
@@ -16,8 +15,6 @@ const navLinks = [
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
@@ -25,33 +22,6 @@ export default function NavBar() {
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
-
-  // Load music state from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem("agrzipang-music");
-    if (saved === "on") {
-      setIsPlaying(true);
-    }
-  }, []);
-
-  // Toggle music
-  const toggleMusic = () => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio("/theme-song.mp4");
-      audioRef.current.loop = true;
-    }
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-      localStorage.setItem("agrzipang-music", "off");
-    } else {
-      audioRef.current.play().catch(() => {
-        // Autoplay blocked, ignore
-      });
-      setIsPlaying(true);
-      localStorage.setItem("agrzipang-music", "on");
-    }
-  };
 
   return (
     <header
@@ -66,8 +36,8 @@ export default function NavBar() {
             <Image
               src="/images/logo.png"
               alt="アグリ・ジパング"
-              width={1170}
-              height={744}
+              width={908}
+              height={435}
               className={`h-10 w-auto transition-all object-contain ${scrolled ? "" : "brightness-0 invert"}`}
               priority
             />
@@ -98,20 +68,6 @@ export default function NavBar() {
               aria-label="Switch language"
             >
               {lang === "ja" ? "EN" : "JA"}
-            </button>
-
-            {/* Music toggle */}
-            <button
-              onClick={toggleMusic}
-              className={`p-2 rounded-full border transition-all ${
-                scrolled
-                  ? "border-deep/30 text-deep hover:bg-deep/5"
-                  : "border-white/30 text-white/90 hover:bg-white/10"
-              } ${isPlaying ? "bg-brand/20" : ""}`}
-              aria-label={isPlaying ? "音楽をオフ" : "音楽をオン"}
-              title={isPlaying ? "音楽をオフ" : "音楽をオン"}
-            >
-              {isPlaying ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
             </button>
 
             {/* CTA button */}
@@ -170,22 +126,13 @@ export default function NavBar() {
           ))}
 
           {/* Mobile language toggle */}
-          <div className="mt-4 mb-2 flex items-center gap-3">
+          <div className="mt-4 mb-2">
             <button
               onClick={() => setLang(lang === "ja" ? "en" : "ja")}
               className="text-xs font-semibold px-4 py-2 rounded-full border border-deep/30 text-deep hover:bg-deep/5 transition-all"
               aria-label="Switch language"
             >
               {lang === "ja" ? "EN" : "JA"}
-            </button>
-            <button
-              onClick={toggleMusic}
-              className={`p-2 rounded-full border border-deep/30 transition-all ${
-                isPlaying ? "bg-brand/20 text-deep" : "text-deep hover:bg-deep/5"
-              }`}
-              aria-label={isPlaying ? "音楽をオフ" : "音楽をオン"}
-            >
-              {isPlaying ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
             </button>
           </div>
 

@@ -30,6 +30,7 @@ export const translations = {
         { label: "主軸事業", value: "営農型太陽光 / CO2 削減" },
         { label: "拠点", value: "栃木県宇都宮市" },
       ],
+      themeSong: "アグリ・ジパング テーマソング",
     },
     about: {
       tag: "About",
@@ -119,7 +120,7 @@ export const translations = {
         },
         {
           title: "アジア・国際パートナーとの連携",
-          body: "ZR Trading との連携を通じて、バングラデシュをはじめとするアジア・中東での植林・環境事業を展開します。",
+          body: "JBE JYO Biomass Energy Sdn Bhd (1538676-H) との連携を通じて、マレーシアをはじめとするアジア・中東での植林・環境事業を展開します。",
         },
       ],
       partner: {
@@ -242,6 +243,7 @@ export const translations = {
         { label: "Core", value: "Agri-Solar / CO2" },
         { label: "Base", value: "Utsunomiya, Tochigi" },
       ],
+      themeSong: "Agri Zipang Theme Song",
     },
     about: {
       tag: "About",
@@ -331,7 +333,7 @@ export const translations = {
         },
         {
           title: "Asia & international partner network",
-          body: "Through our partnership with ZR Trading, we expand reforestation and environmental businesses across Bangladesh, Asia, and the Middle East.",
+          body: "Through our partnership with JBE JYO Biomass Energy Sdn Bhd (1538676-H), we expand reforestation and environmental businesses across Malaysia, Asia, and the Middle East.",
         },
       ],
       partner: {

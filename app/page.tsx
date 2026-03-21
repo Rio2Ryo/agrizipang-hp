@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Volume2, VolumeX } from "lucide-react";
 import {
   ArrowRight,
   Globe,
@@ -44,6 +45,31 @@ const contactInfoIcons = [Mail, Clock, MessageSquare] as const;
 
 function HomePage() {
   const { lang, t } = useLanguage();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("agrzipang-music");
+    if (saved === "on") {
+      setIsPlaying(true);
+    }
+  }, []);
+
+  const toggleMusic = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/theme-song.mp4");
+      audioRef.current.loop = true;
+    }
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+      localStorage.setItem("agrzipang-music", "off");
+    } else {
+      audioRef.current.play().catch(() => {});
+      setIsPlaying(true);
+      localStorage.setItem("agrzipang-music", "on");
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -114,6 +140,30 @@ function HomePage() {
                 <span>{t.hero.ctaSecondary}</span>
               </a>
             </div>
+
+            {/* Theme Song Button */}
+            <div className="hero-fade hero-fade-6 mt-8">
+              <button
+                onClick={toggleMusic}
+                className="group flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20 hover:border-white/50"
+                aria-label={isPlaying ? "音楽を停止" : "音楽を再生"}
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
+                  {isPlaying ? (
+                    <Volume2 className="h-4 w-4" />
+                  ) : (
+                    <VolumeX className="h-4 w-4" />
+                  )}
+                </span>
+                <span className="text-sm">{t.hero.themeSong}</span>
+                {isPlaying && (
+                  <span className="ml-1 flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -181,19 +231,18 @@ function HomePage() {
             <p className="section-subtitle">{t.business.subtitle}</p>
           </div>
 
-          <div className="bento-grid mt-20">
+          <div className="mt-20 grid gap-8 lg:grid-cols-3">
             {t.business.pillars.map((pillar, i) => {
               const Icon = businessIcons[i];
               const delayClass = (["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"] as const)[i];
-              const imageHeightClass = i === 0 ? "h-full min-h-[300px]" : "h-56";
               return (
                 <article
                   key={pillar.title}
                   className={`reveal ${delayClass} group overflow-hidden rounded-[2.25rem] border border-black/5 bg-white shadow-[0_30px_80px_rgba(28,33,18,0.10)] transition-transform duration-500 hover:-translate-y-2 hover:scale-[1.02]`}
                 >
                   <div className="flex h-full flex-col">
-                    <div className={`relative ${imageHeightClass}`}>
-                      <Image src={BUSINESS_PHOTOS[i]} alt={pillar.title} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                    <div className="relative h-64">
+                      <Image src={BUSINESS_PHOTOS[i]} alt={pillar.title} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.28)_100%)]" />
                     </div>
                     <div className="flex flex-1 flex-col p-8 sm:p-10">
@@ -201,7 +250,7 @@ function HomePage() {
                         <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-deep/8">
                           <Icon className="h-5 w-5 text-deep" />
                         </span>
-                        <span className="text-xs uppercase tracking-[0.2em]">0{i + 1}</span>
+                        <span className="text-5xl font-black uppercase tracking-[0.15em] text-deep/20">0{i + 1}</span>
                       </div>
                       <h3 className="mt-7 font-serif text-3xl font-semibold leading-tight tracking-[-0.03em] text-deep sm:text-4xl">
                         {pillar.title}
@@ -378,7 +427,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-3">
             <div>
-              <Image src="/images/logo.png" alt="アグリ・ジパング" width={1170} height={744} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/images/logo.png" alt="アグリ・ジパング" width={908} height={435} className="h-10 w-auto object-contain brightness-0 invert" />
               <p className="mt-5 text-sm leading-8 text-white/60 whitespace-pre-line">{t.footer.tagline}</p>
             </div>
             <div>
