@@ -86,9 +86,9 @@ function buildAutoReplyHtml(message: ContactMessage) {
   <body style="margin:0;padding:0;background:#f4f1e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1f2937;">
     <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
       <div style="background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e7e0d1;box-shadow:0 10px 30px rgba(0,0,0,0.06);">
-        <div style="background:linear-gradient(135deg,#1f4d1a 0%, #4a7a1f 100%);padding:28px 24px;text-align:center;">
+        <div style="background:linear-gradient(135deg,#1f4d1a 0%, #4a7a1f 100%);padding:28px 24px;text-align:center;color:#ffffff;">
           <img src="https://www.agrizipang.com/images/logo.png" alt="アグリ・ジパング" style="height:56px;width:auto;display:block;margin:0 auto 14px;filter:brightness(0) invert(1);" />
-          <div style="font-size:22px;line-height:1.4;font-weight:700;color:#ffffff;">お問い合わせを受け付けました</div>
+          <div style="font-size:22px;line-height:1.4;font-weight:700;color:#ffffff !important;">お問い合わせを受け付けました</div>
         </div>
         <div style="padding:32px 24px;">
           <p style="margin:0 0 18px;font-size:16px;line-height:1.9;">${name} 様</p>
