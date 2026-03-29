@@ -40,6 +40,31 @@ ${message.message}
 https://agrizipang-hp.vercel.app/admin`;
 }
 
+function buildAutoReplyBody(message: ContactMessage) {
+  return `${message.name} 様
+
+このたびはアグリ・ジパングへお問い合わせいただき、ありがとうございます。
+以下の内容でお問い合わせを受け付けました。
+
+----------------------------------
+団体・企業名：${message.org || '未入力'}
+ご担当者名：${message.name}
+メールアドレス：${message.email}
+----------------------------------
+
+ご相談内容：
+${message.message}
+
+----------------------------------
+受信日時：${message.createdAt}
+----------------------------------
+
+内容を確認のうえ、担当者よりご連絡いたします。
+
+農事組合法人アグリ・ジパング
+https://www.agrizipang.com`;
+}
+
 export async function POST(request: NextRequest) {
   const payload = await request.json().catch(() => null);
   if (!payload) {
@@ -87,6 +112,13 @@ export async function POST(request: NextRequest) {
         to: contactEmail,
         subject: `【お問い合わせ】${message.name}様より`,
         text: buildEmailBody(message),
+      });
+
+      await resend.emails.send({
+        from: 'no-reply@agrizipang.com',
+        to: message.email,
+        subject: '【アグリ・ジパング】お問い合わせを受け付けました',
+        text: buildAutoReplyBody(message),
       });
     } catch (error) {
       console.error('[api/contact] resend send failed', error);
