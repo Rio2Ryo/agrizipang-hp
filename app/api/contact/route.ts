@@ -65,6 +65,56 @@ ${message.message}
 https://www.agrizipang.com`;
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildAutoReplyHtml(message: ContactMessage) {
+  const org = escapeHtml(message.org || '未入力');
+  const name = escapeHtml(message.name);
+  const email = escapeHtml(message.email);
+  const body = escapeHtml(message.message).replace(/\n/g, '<br />');
+  const createdAt = escapeHtml(message.createdAt);
+
+  return `<!doctype html>
+<html lang="ja">
+  <body style="margin:0;padding:0;background:#f4f1e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1f2937;">
+    <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
+      <div style="background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e7e0d1;box-shadow:0 10px 30px rgba(0,0,0,0.06);">
+        <div style="background:linear-gradient(135deg,#1f4d1a 0%, #4a7a1f 100%);padding:28px 24px;text-align:center;">
+          <img src="https://www.agrizipang.com/images/logo.png" alt="アグリ・ジパング" style="height:56px;width:auto;display:block;margin:0 auto 14px;filter:brightness(0) invert(1);" />
+          <div style="font-size:22px;line-height:1.4;font-weight:700;color:#ffffff;">お問い合わせを受け付けました</div>
+        </div>
+        <div style="padding:32px 24px;">
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.9;">${name} 様</p>
+          <p style="margin:0 0 22px;font-size:16px;line-height:1.9;">このたびはアグリ・ジパングへお問い合わせいただき、ありがとうございます。以下の内容で受け付けました。</p>
+
+          <div style="background:#faf8f2;border:1px solid #ece5d8;border-radius:16px;padding:20px 18px;margin:0 0 24px;">
+            <div style="font-size:14px;line-height:1.8;"><strong>団体・企業名：</strong>${org}</div>
+            <div style="font-size:14px;line-height:1.8;"><strong>ご担当者名：</strong>${name}</div>
+            <div style="font-size:14px;line-height:1.8;"><strong>メールアドレス：</strong>${email}</div>
+            <div style="font-size:14px;line-height:1.8;margin-top:14px;"><strong>ご相談内容：</strong><br />${body}</div>
+            <div style="font-size:13px;line-height:1.8;color:#6b7280;margin-top:14px;"><strong>受信日時：</strong>${createdAt}</div>
+          </div>
+
+          <p style="margin:0 0 24px;font-size:15px;line-height:1.9;">内容を確認のうえ、担当者よりご連絡いたします。</p>
+
+          <div style="padding-top:18px;border-top:1px solid #ece5d8;font-size:14px;line-height:1.8;color:#4b5563;">
+            <strong style="color:#1f2937;">農事組合法人 アグリ・ジパング</strong><br />
+            <a href="https://www.agrizipang.com" style="color:#2f6b1f;text-decoration:none;">https://www.agrizipang.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>`;
+}
+
 export async function POST(request: NextRequest) {
   const payload = await request.json().catch(() => null);
   if (!payload) {
@@ -119,6 +169,7 @@ export async function POST(request: NextRequest) {
         to: message.email,
         subject: '【アグリ・ジパング】お問い合わせを受け付けました',
         text: buildAutoReplyBody(message),
+        html: buildAutoReplyHtml(message),
       });
     } catch (error) {
       console.error('[api/contact] resend send failed', error);
