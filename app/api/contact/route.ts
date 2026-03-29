@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     try {
       const resend = new Resend(resendApiKey);
       await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'no-reply@agrizipang.com',
         to: contactEmail,
         subject: `【お問い合わせ】${message.name}様より`,
         text: buildEmailBody(message),
