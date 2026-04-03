@@ -337,10 +337,13 @@ function HomePage() {
                 <div className="max-w-4xl">
                   <h3 className="font-serif text-3xl font-semibold tracking-[-0.03em] text-deep sm:text-4xl">{t.collaboration.partner.title}</h3>
                   <p className="mt-5 text-sm leading-8 text-stone-600 sm:text-base">{t.collaboration.partner.body}</p>
-                  <a href={t.collaboration.partner.ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-inline mt-8 inline-flex items-center gap-2 text-sm font-semibold text-deep">
+                  <div className="mt-8 flex flex-col items-start gap-3">
+                    <Image src="/agrizipang-logo.png" alt="Agrizipang Logo" width={60} height={60} />
+                  <a href={t.collaboration.partner.ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-inline inline-flex items-center gap-2 text-sm font-semibold text-deep">
                     {t.collaboration.partner.cta}
                     <ArrowRight className="h-4 w-4" />
                   </a>
+                  </div>
                 </div>
               </div>
             </div>
